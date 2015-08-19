@@ -1,0 +1,16 @@
+{
+  "db": {
+    "name": "vote-hackdash",
+    "host": "localhost",
+    "url": null
+  },
+  "session": "top secret",
+  "googleAnalytics": "UA-XXXXXXXX-X",
+  "keys": {
+    "twitter": {
+        "consumerKey": "xxxxxxx"
+      , "consumerSecret": "yyyyyyy"
+      , "callbackURL":  "/auth/twitter/callback"
+    }
+  }
+}
