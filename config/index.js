@@ -4,7 +4,7 @@
  */
 
 import config from './config.json';
-//import testConfig from './config.test.json';
+import testConfig from './config.test.json';
 
 let configs = config;
 
