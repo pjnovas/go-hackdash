@@ -1,9 +1,11 @@
 
-import request from 'supertest';
 import {expect} from 'chai';
 
-global.request = request;
-global.expect = expect;
+// Helper function to re-check get().expect() status code
+// because superagent is not always working :(
+global.expectCode = (code, res) => {
+  expect(res.status).to.be.equal(code);
+};
 
 describe('(~˘▾˘)~  TESTS  ~(˘▾˘~)', () => {
 

@@ -1,4 +1,7 @@
 
+import request from 'supertest';
+import {expect} from 'chai';
+
 import {Vote} from 'lib/models';
 import {Poll} from 'lib/models';
 import {Types} from 'mongoose';
@@ -12,7 +15,8 @@ describe('Votes', () => {
 
     Poll.create({
       dashboard: 'dash1',
-      title: 'poll 1'
+      title: 'poll 1',
+      owner: users[0]._id
     }, (err, _poll) => {
       poll = _poll;
 
@@ -43,7 +47,7 @@ describe('Votes', () => {
   });
 
   it ('must not allow to request without a fingerprint', done => {
-    agent.get('/api/polls/' + poll._id + '/votes')
+    agent.get('/api/polls/' + poll.token + '/votes')
       .expect(400)
       .end(done);
   });
@@ -51,7 +55,7 @@ describe('Votes', () => {
   it ('must allow to fetch all project votes', done => {
     let fingerprint = 'b';
 
-    agent.get('/api/polls/' + poll._id + '/votes')
+    agent.get('/api/polls/' + poll.token + '/votes')
       .set('fingerprint', fingerprint)
       .expect(200)
       .end((err, res) => {
@@ -82,7 +86,7 @@ describe('Votes', () => {
     let v = votes[0];
     let fingerprint = 'b';
 
-    agent.post('/api/polls/' + poll._id + '/votes/' + v.projectId)
+    agent.post('/api/polls/' + poll.token + '/votes/' + v.projectId)
       .set('fingerprint', fingerprint)
       .expect(200)
       .end((err, res) => {
@@ -102,7 +106,7 @@ describe('Votes', () => {
     let fingerprint = 'b';
     let newId = Types.ObjectId().toString();
 
-    agent.post('/api/polls/' + poll._id + '/votes/' + newId)
+    agent.post('/api/polls/' + poll.token + '/votes/' + newId)
       .set('fingerprint', fingerprint)
       .expect(200)
       .end((err, res) => {
@@ -119,7 +123,7 @@ describe('Votes', () => {
   it ('must VALIDATE ProjectID is a valid Mongo ObjectId', done => {
     let fingerprint = 'd';
 
-    agent.post('/api/polls/' + poll._id + '/votes/XYZ')
+    agent.post('/api/polls/' + poll.token + '/votes/XYZ')
       .set('fingerprint', fingerprint)
       .expect(400)
       .end(done);
@@ -130,7 +134,7 @@ describe('Votes', () => {
     let v = votes[0];
     let fingerprint = 'b';
 
-    agent.delete('/api/polls/' + poll._id + '/votes/' + v.projectId)
+    agent.delete('/api/polls/' + poll.token + '/votes/' + v.projectId)
       .set('fingerprint', fingerprint)
       .expect(200)
       .end((err, res) => {
