@@ -7,5 +7,6 @@ describe('API', () => {
   });
 
   require('./polls');
+  require('./votes');
 
 });
