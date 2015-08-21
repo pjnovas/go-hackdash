@@ -40,7 +40,7 @@ class PollAPI {
 
     request
       .get(this.uri + id + "/votes")
-      .set('fingerprint', 'todo')
+      .set("fingerprint", "todo")
       .end( (err, res) => {
         if (this.errorHandler(err, "findVotes")){
           return;
@@ -76,7 +76,7 @@ class PollAPI {
 
   generateToken(id){
     request
-      .post(this.uri + id + '/token')
+      .post(this.uri + id + "/token")
       .end( (err, res) => {
         if (this.errorHandler(err, "generateToken")){
           return;
@@ -88,8 +88,8 @@ class PollAPI {
 
   vote(id, projectId){
     request
-      .post(this.uri + id + '/votes/' + projectId)
-      .set('fingerprint', 'todo')
+      .post(this.uri + id + "/votes/" + projectId)
+      .set("fingerprint", "todo")
       .end( (err, res) => {
         if (this.errorHandler(err, "vote")){
           return;
@@ -101,8 +101,8 @@ class PollAPI {
 
   unvote(id, projectId){
     request
-      .del(this.uri + id + '/votes/' + projectId)
-      .set('fingerprint', 'todo')
+      .del(this.uri + id + "/votes/" + projectId)
+      .set("fingerprint", "todo")
       .end( (err, res) => {
         if (this.errorHandler(err, "unvote")){
           return;

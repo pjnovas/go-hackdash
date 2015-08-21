@@ -19,14 +19,16 @@ var optsT = _.extend(_.clone(options), { watch: true });
 module.exports = {
   app: {
     options: options,
-    src: ['src/index.js'],
-    dest: 'dist/<%= pkg.name %>.js'
+    files: {
+      'dist/<%= pkg.name %>.js': ['src/index.js'],
+    }
   },
 
   watch: {
     options: optsW,
-    src: ['src/index.js'],
-    dest: 'dist/<%= pkg.name %>.js'
+    files: {
+      'dist/<%= pkg.name %>.js': ['src/index.js'],
+    }
   },
 
   tests: {
