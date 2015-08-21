@@ -1,0 +1,74 @@
+.list-group {
+
+  .list-group-item {
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+      background-color: @group-list-item-hover-color;
+
+      .btn-group {
+        .btn {
+          background-color: @group-list-item-hover-color;
+
+          &:hover {
+            background-color: #e6e6e6;
+            border-color: #adadad;
+          }
+        }
+      }
+    }
+
+    .avatar-col {
+      max-width: 60px;
+
+      .avatar {
+        margin-top: 10px;
+      }
+    }
+
+    h4 {
+      margin-top: 10px;
+    }
+
+    p {
+      margin: 0 0 10px 0;
+    }
+
+    .timestamp {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      margin: 2px;
+      color: @gray-color;
+      background: none;
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    .btn-group {
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      .btn {
+        border: none;
+        border-radius: 50%;
+        padding: 6px;
+        margin: 5px;
+        color: @gray-color;
+        font-size: 20px;
+      }
+    }
+
+    .right-icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+      margin: 2px;
+      color: @btn-success-bg;
+      font-size: 40px;
+    }
+
+  }
+}

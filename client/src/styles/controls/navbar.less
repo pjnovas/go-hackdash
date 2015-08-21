@@ -1,0 +1,48 @@
+nav {
+  background-color: @nav-bar-bg-color;
+}
+
+.navbar-default {
+  background-color: @nav-bar-bg-color;
+  border-color: darken(@nav-bar-bg-color, 5%);
+
+  &.no-shadow {
+    box-shadow: none;
+    border: none;
+  }
+
+  .navbar-nav {
+
+    li {
+      a, &.navbar-brand {
+        color: @nav-bar-text-color;
+      }
+    }
+
+  }
+}
+
+.navbar-nav {
+  margin: 0!important;
+
+  &.navbar-left {
+    float: left!important;
+  }
+
+  &.navbar-right {
+    float: right!important;
+  }
+}
+
+.navbar-back {
+  >a {
+
+    @media @xs-and-down {
+      padding: 15px 0 !important;
+    }
+
+    @media @sm-and-up {
+      padding: 15px 15px 15px 0 !important;
+    }
+  }
+}

@@ -1,0 +1,99 @@
+
+.card {
+
+  background-color: #fff;
+  border-radius: 3px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  .z2;
+
+  .header {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      padding: 8px;
+      font-size: 18px;
+      color: #fff;
+
+      &.icon {
+        background: @card-invite-avatar-bg;
+        color: @card-invite-avatar-text;
+
+        i {
+          font-size: 36px;
+          text-indent: -25px;
+          line-height: 24px;
+        }
+      }
+    }
+
+    .content {
+
+      h2 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 400;
+      }
+
+      h3 {
+        font-size: 16px;
+        font-weight: 400;
+        color: gray;
+        margin: 5px 0;
+      }
+    }
+
+  }
+
+  .media {
+    min-height: 180px;
+    position: relative;
+    border-top: 1px solid @divider-color;
+    background-size: cover;
+
+    .title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.5);
+      margin: 0;
+      padding: 10px 20px;
+      color: #fff;
+      overflow: hidden;
+    }
+  }
+
+  .body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    white-space: pre-wrap;
+    overflow: hidden;
+    max-height: 115px;
+  }
+
+  .actions {
+    border-top: 1px solid @divider-color;
+
+    .btn {
+      margin: 5px;
+      padding: 10px;
+      font-weight: 400;
+      border-bottom: none;
+
+      &:hover {
+        background-color: @divider-color;
+        border-radius: 2px;
+        border-bottom: none;
+      }
+    }
+  }
+
+}

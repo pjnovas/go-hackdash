@@ -1,0 +1,42 @@
+
+.paper-ctn {
+
+  @media @xs-and-down {
+    position: relative;
+    display: table-row;
+    margin: 0;
+  }
+}
+
+.paper {
+  background-color: #fff;
+  padding-bottom: 30px;
+  padding-top: 10px;
+
+  border-radius: 3px;
+  margin-top: 10px;
+
+  .z2;
+
+  h1, h3 {
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  @media @xs-and-down {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    height: 100%;
+    border-radius: 0;
+    border: none;
+  }
+
+  &.header-spacer {
+    @media @xs-and-down {
+      top: 50px;
+    }
+  }
+
+}

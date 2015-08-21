@@ -1,0 +1,55 @@
+*:focus {
+  outline: 0 none !important;
+}
+
+body {
+  background: @background-color;
+  padding-top: 60px;
+}
+
+body, h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: @font-family;
+  font-weight: 300;
+}
+
+.z0 { box-shadow: @zDepth0; }
+.z1 { box-shadow: @zDepth1; }
+.z2 { box-shadow: @zDepth2; }
+.z3 { box-shadow: @zDepth3; }
+
+label {
+  font-weight: normal;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.form-control {
+  padding-left: 0;
+  padding-right: 0;
+
+  border: none;
+  border-bottom: 1px solid silver;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+
+  &:focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}
+
+.text-vcenter {
+  padding-top: 10px;
+}
+
+.max-w160 {
+  max-width: 160px;
+}

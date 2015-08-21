@@ -1,0 +1,22 @@
+default:
+  - 'eslint'
+  - 'less'
+  - 'browserify:app'
+  - 'copy:assets'
+
+test:
+  - 'browserify:tests'
+  - 'connect'
+  - 'watch:tests'
+
+w:
+  - 'browserify:watch'
+  - 'watch:app'
+
+min:
+  - 'eshint'
+  - 'less'
+  - 'browserify:app'
+  - 'uglify:all'
+  - 'cssmin:all'
+  - 'copy:assets'

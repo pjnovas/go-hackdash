@@ -40,6 +40,13 @@ describe('Polls', () => {
     agent.get('/api/polls').expect(200).end((err, res) => {
       expect(res.body).to.be.an('array');
       expect(res.body.length).to.be.equal(2);
+
+      res.body.forEach( poll => {
+        expect(poll.id).to.be.ok;
+        expect(poll._id).to.not.be.ok;
+        expect(poll.token).to.not.be.ok;
+      });
+
       done();
     });
   });
@@ -48,6 +55,8 @@ describe('Polls', () => {
     let id = polls[0]._id;
     agent.get('/api/polls/' + id).expect(200).end((err, res) => {
       expect(res.body._id).to.be.equal(id.toString());
+      expect(res.body.id).to.be.equal(id.toString());
+      expect(res.body.token).to.not.be.ok;
       done();
     });
   });
@@ -110,8 +119,7 @@ describe('Polls', () => {
       dashboard: 'dash666',
       token: 'false-token',
       isPublic: true,
-      open: false,
-      votes: 5
+      open: false
     };
 
     passport = cobbler('session', users[0].id);
@@ -127,7 +135,6 @@ describe('Polls', () => {
       expect(_poll.dashboard).to.be.equal(poll.dashboard);
       expect(_poll.isPublic).to.be.equal(poll.isPublic);
       expect(_poll.open).to.be.equal(poll.open);
-      expect(_poll.votes).to.be.equal(poll.votes);
 
       expect(new Date(_poll.created_at)).to.be.lessThan(Date.now());
       expect(new Date(_poll.updated_at)).to.be.lessThan(Date.now());
@@ -145,8 +152,7 @@ describe('Polls', () => {
       dashboard: 'dash666 2',
       token: 'false-token',
       isPublic: true,
-      open: true,
-      votes: 10
+      open: true
     };
 
     passport = cobbler('session', users[0].id);
@@ -155,12 +161,11 @@ describe('Polls', () => {
 
       expect(_poll._id).to.be.equal(id);
       expect(_poll.token).to.be.equal(newPoll.token);
+      expect(_poll.dashboard).to.be.equal(newPoll.dashboard);
 
       expect(_poll.title).to.be.equal(poll.title);
-      expect(_poll.dashboard).to.be.equal(poll.dashboard);
       expect(_poll.isPublic).to.be.equal(poll.isPublic);
       expect(_poll.open).to.be.equal(poll.open);
-      expect(_poll.votes).to.be.equal(poll.votes);
 
       expect(new Date(_poll.created_at)).to.be.eql(new Date(newPoll.created_at));
       expect(new Date(_poll.updated_at)).to.be.greaterThan(new Date(newPoll.updated_at));

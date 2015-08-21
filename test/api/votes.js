@@ -151,4 +151,29 @@ describe('Votes', () => {
 
   });
 
+  it ('must NOT allow to vote or unvote a project if is not an open poll', done => {
+    let fingerprint = 'k';
+    let newId = Types.ObjectId().toString();
+
+    poll.open = false;
+
+    poll.save( (err, _poll) => {
+      expect(_poll.open).to.be.equal(false);
+
+      agent.post('/api/polls/' + poll.token + '/votes/' + newId)
+        .set('fingerprint', fingerprint)
+        .expect(403)
+        .end((err, res) => {
+
+          agent.delete('/api/polls/' + poll.token + '/votes/' + newId)
+            .set('fingerprint', fingerprint)
+            .expect(403)
+            .end(done);
+
+        });
+
+    });
+
+  });
+
 });

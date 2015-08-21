@@ -1,0 +1,74 @@
+// from bootstrap LESS
+// @screen-xs-max
+// @screen-sm-min - @screen-sm-max
+// @screen-md-min - @screen-md-max
+// @screen-lg-min
+
+@xs-and-down: ~"only screen and (max-width: @{screen-xs-max})";
+@sm-and-down: ~"only screen and (max-width: @{screen-sm-max})";
+@md-and-down: ~"only screen and (max-width: @{screen-md-max})";
+
+@sm-only: ~"only screen and (min-width: @{screen-sm-min}) and (max-width: @{screen-sm-max})";
+@md-only: ~"only screen and (min-width: @{screen-md-min}) and (max-width: @{screen-md-max})";
+
+@sm-and-up: ~"only screen and (min-width: @{screen-sm-min})";
+@md-and-up: ~"only screen and (min-width: @{screen-md-min})";
+@lg-and-up: ~"only screen and (min-width: @{screen-lg-min})";
+
+@container-large-desktop: @container-desktop;
+@container-lg: @container-large-desktop;
+
+@twitter: #00aced;
+@facebook: #3b5998;
+@google: #dd4b39;
+
+@zDepth0: none;
+@zDepth1: 1px 2px 1px rgba(0, 0, 0, 0.35);
+@zDepth2: 1px 2px 3px rgba(0, 0, 0, 0.35);
+@zDepth3: 1px 2px 7px rgba(0,0,0,0.7);
+
+@font-family: 'Roboto', sans-serif;
+
+// Palette helper: https://www.materialpalette.com
+// https://www.materialpalette.com/green/indigo
+
+@primary-dark-color: #388E3C;
+@primary-color: #4CAF50;
+@primary-light-color: #C8E6C9;
+@text-icons-color: #FFFFFF;
+
+@accent-color: #448AFF;
+@primary-text-color: #212121;
+@secondary-text-color: #727272;
+@divider-color: #B6B6B6;
+
+@background-color: #F2F2F2;
+
+// Application
+
+@nav-bar-bg-color: @primary-color;
+@nav-bar-text-color: @text-icons-color;
+
+@tabs-item-bg-color: @primary-color;
+@tabs-item-text-color: @primary-light-color;
+@tabs-item-text-color-active: @text-icons-color;
+@tabs-item-bg-color-active: @text-icons-color;
+@tabs-item-text-color-disabled: @primary-dark-color;
+
+@card-invite-avatar-bg: #C3BC38;
+@card-invite-avatar-text: @text-icons-color;
+
+@meeting-stage-color-joining: @btn-info-bg;
+@meeting-stage-color-confirming: @btn-warning-bg;
+@meeting-stage-color-running: @btn-danger-bg;
+@meeting-stage-color-played: @btn-success-bg;
+@meeting-stage-color-historic: @divider-color;
+
+@btn-action-color: @accent-color;
+@btn-action-text-color: @text-icons-color;
+
+@link-color: #246EA3;
+@link-color-hover: darken(@link-color, 10%);
+
+@gray-color: #999;
+@group-list-item-hover-color: #f5f5f5;

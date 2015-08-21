@@ -1,2 +1,15 @@
-hello!
 <div id="app"></div>
+
+{{#if user}}
+<script type='text/javascript'>
+  window.user = JSON.parse('{{{json user}}}');
+</script>
+{{/if}}
+
+{{#if redirect}}
+<script type='text/javascript'>
+  window.redirect = '{{redirect}}';
+</script>
+{{/if}}
+
+<script src="/js/vote-hackdash.js"></script>

@@ -1,0 +1,33 @@
+@number-size: 10px;
+@number-gap: 20px;
+@date-size: @number-size*8;
+@time-size: @number-size*4;
+
+input {
+
+  &.date {
+    width: @date-size;
+  }
+
+  &.time {
+    width: @time-size;
+  }
+
+  &.datetime {
+    width: @date-size+@time-size;
+  }
+
+  &.number,
+  &.number-0 {
+    width: @number-size+@number-gap;
+  }
+
+  &.number-00 {
+    width: (@number-size*2)+@number-gap;
+  }
+
+  &.number-000 {
+    width: (@number-size*3)+@number-gap;
+  }
+
+}
