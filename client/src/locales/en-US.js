@@ -4,7 +4,7 @@ export default {
   "time_format": "HH:mm",
   "full_datetime_format": "MM/DD/YYYY HH:mm",
 
-  "app_title": "Hackdash Poll!",
+  "app_title": "Hackdash Challenge",
 
   "login": "Login",
   "back": "back",

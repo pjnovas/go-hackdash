@@ -6,6 +6,7 @@
   },
   "session": "top secret",
   "googleAnalytics": "UA-XXXXXXXX-X",
+  "providers": ["twitter", "facebook"],
   "keys": {
     "twitter": {
         "consumerKey": "xxxxxxx"

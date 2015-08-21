@@ -6,22 +6,10 @@ export default class Login extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.state = { };
-
-    if (window.redirect){
-      this.state.redirect = window.redirect;
-    }
-
+    this.state = Login.defaultState;
   }
 
   render() {
-
-    let uris = {
-      twitter: "/auth/twitter",
-      facebook: "/auth/facebook",
-      google: "/auth/google"
-    };
 
     if (this.state.redirect){
       for (let p in uris){
@@ -44,27 +32,17 @@ export default class Login extends React.Component {
                 <h3>{__.account_title_social}</h3>
               </Col>
 
-              <Col xs={8} xsOffset={2} md={6} mdOffset={3}>
+              <Col xs={8} xsOffset={2} md={6} mdOffset={3} className="text-center">
 
-                <Row>
-                  <Col xs={4} className="text-center">
-                    <Button href={uris.twitter} className="btn-social twitter">
-                      <Icon name="twitter" />
+                { this.state.providers.map( provider => {
+                  return (
+                    <Button key={provider}
+                      href={"/auth/" + provider}
+                      className={"btn-social " + provider}>
+                      <Icon name={provider} />
                     </Button>
-                  </Col>
-
-                  <Col xs={4} className="text-center">
-                    <Button href={uris.facebook} className="btn-social facebook">
-                      <Icon name="facebook" />
-                    </Button>
-                  </Col>
-
-                  <Col xs={4} className="text-center">
-                    <Button href={uris.google} className="btn-social google">
-                      <Icon name="google" />
-                    </Button>
-                  </Col>
-                </Row>
+                  );
+                }) }
 
               </Col>
             </Row>
@@ -76,4 +54,10 @@ export default class Login extends React.Component {
     );
   }
 
+};
+
+Login.displayName = "Login";
+Login.defaultState = {
+  providers: window.__settings.providers || [],
+  redirect: window.redirect || ""
 };
