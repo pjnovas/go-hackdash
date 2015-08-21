@@ -30,6 +30,7 @@ node_modules
 npm-debug.log
 node_modules
 config/config.json
+config/config.test.json
 public/css/*
 !public/css/.gitkeep
 public/js/*
