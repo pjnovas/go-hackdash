@@ -22,20 +22,22 @@ export default class PollView extends React.Component {
     this.evChangePoll.remove();
   }
 
-  onChangePoll(){
-    let poll = PollStore.getStateById();
+  onChangePolls(){
+    let poll = PollStore.getStateById(this.props.params.id);
     this.setState({ poll, loading: false });
   }
 
   render() {
-    <div>
-      <Header />
-      { this.state.loading ? __.loading :
-        <div>
-          <h1>{this.state.poll.title}</h1>
-        </div>
-      }
-    </div>
+    return (
+      <div>
+        <Header />
+        { this.state.loading ? __.loading :
+          <div>
+            <h1>{this.state.poll.title}</h1>
+          </div>
+        }
+      </div>
+    );
   }
 
 };

@@ -30,7 +30,9 @@ export default class PollModal extends React.Component {
   }
 
   componentWillUnmount() {
-    this.evChangePoll.remove();
+    if (this.evChangePoll){
+      this.evChangePoll.remove();
+    }
   }
 
   onChangePolls(){
