@@ -15,7 +15,7 @@ export default class PollForm extends React.Component {
   }
 
   render() {
-    let pollURI = "htto://pepe.com/polls/" + this.props.token;
+    let pollURI = window.location.origin + "/polls/" + this.props.token;
 
     return (
       <form className="poll-form">
@@ -51,8 +51,8 @@ export default class PollForm extends React.Component {
               <Divider/>
 
               <FormControls.Static labelClassName="col-xs-3" wrapperClassName="col-xs-9"
-                label={__.poll_token}>
-                {this.props.token}
+                label={__.poll_access_via_url}>
+                <a href={pollURI}>{pollURI}</a>
 
                 <OverlayTrigger placement='top' overlay={<Tooltip>{__.poll_token_refresh}</Tooltip>}>
                   <Button onClick={ e => {this.props.onGenerateToken(); }}>
@@ -60,11 +60,6 @@ export default class PollForm extends React.Component {
                   </Button>
                 </OverlayTrigger>
 
-              </FormControls.Static>
-
-              <FormControls.Static labelClassName="col-xs-3" wrapperClassName="col-xs-9"
-                label={__.poll_access_via_url}>
-                <a href={pollURI}>{pollURI}</a>
               </FormControls.Static>
             </form>
           : null }
