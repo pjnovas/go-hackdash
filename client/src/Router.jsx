@@ -4,6 +4,8 @@ import Router, {Route, NotFoundRoute, DefaultRoute} from "react-router";
 import App from "./App.jsx";
 import Login from "./components/account/Login.jsx";
 import Home from "./components/Home.jsx";
+import Polls from "./components/polls/index.jsx";
+import PollView from "./components/polls/View.jsx";
 import NotFound from "./components/NotFound.jsx";
 
 const routes = (
@@ -12,6 +14,9 @@ const routes = (
 
     <Route path="/login" name="login" handler={Login} />
     <Route path="/notfound" name="notfound" handler={NotFound} />
+
+    <Route path="/polls" name="polls" handler={Polls} />
+    <Route path="/polls/:id" name="poll" handler={PollView} />
 
     <NotFoundRoute handler={NotFound} />
     <DefaultRoute handler={Home}/>

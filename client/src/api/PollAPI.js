@@ -53,6 +53,7 @@ class PollAPI {
   create(poll){
     request
       .post(this.uri)
+      .send(poll)
       .end( (err, res) => {
         if (this.errorHandler(err, "create")){
           return;
@@ -65,6 +66,7 @@ class PollAPI {
   update(id, poll){
     request
       .put(this.uri + id)
+      .send(poll)
       .end( (err, res) => {
         if (this.errorHandler(err, "update")){
           return;

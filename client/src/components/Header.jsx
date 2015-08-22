@@ -26,9 +26,7 @@ export default class Header extends React.Component {
 
       {(this.props.hideprofile ? null :
         <ul className="nav navbar-nav navbar-right">
-          <NavItemLink to="profile" className="navbar-profile">
-            <Avatar src={profilePic} />
-          </NavItemLink>
+          <Avatar src={profilePic} />
         </ul>
       )}
 

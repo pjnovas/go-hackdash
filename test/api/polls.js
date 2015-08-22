@@ -25,6 +25,15 @@ describe('Polls', () => {
       title: 'poll 3',
       owner: users[0]._id,
       isPublic: false
+    }, {
+      dashboard: 'dash3',
+      title: 'poll 4',
+      owner: users[0]._id,
+    }, {
+      dashboard: 'dash2',
+      title: 'poll 5',
+      owner: users[1]._id,
+      isPublic: false
     }], (err, _polls) => {
       polls = _polls;
       done(err);
@@ -37,9 +46,9 @@ describe('Polls', () => {
   });
 
   it ('must return first N public polls', done => {
-    agent.get('/api/polls').expect(200).end((err, res) => {
+    agent.get('/api/polls/latest').expect(200).end((err, res) => {
       expect(res.body).to.be.an('array');
-      expect(res.body.length).to.be.equal(2);
+      expect(res.body.length).to.be.equal(3);
 
       res.body.forEach( poll => {
         expect(poll.id).to.be.ok;
@@ -51,10 +60,37 @@ describe('Polls', () => {
     });
   });
 
+  it ('must return my polls', done => {
+    passport = cobbler('session', users[1].id);
+
+    agent.get('/api/polls').expect(200).end((err, res) => {
+      expect(res.body).to.be.an('array');
+      expect(res.body.length).to.be.equal(3);
+
+      res.body.forEach( poll => {
+        expect(poll.id).to.be.ok;
+        expect(poll._id).to.not.be.ok;
+        expect(poll.token).to.be.ok;
+        expect(poll.owner).to.be.equal(users[1].id.toString());
+      });
+
+      passport.restore();
+      done();
+    });
+  });
+
+  it ('must return forbidden if user is not auth', done => {
+    let agent2 = request.agent(server);
+    agent2.get('/api/polls').expect(401).end((err, res) => {
+      expectCode(401, res);
+      done();
+    });
+  });
+
   it ('must return a poll by id if isPublic', done => {
-    let id = polls[0]._id;
+    let id = polls[3]._id;
     agent.get('/api/polls/' + id).expect(200).end((err, res) => {
-      expect(res.body._id).to.be.equal(id.toString());
+      expect(res.body._id).to.not.be.ok;
       expect(res.body.id).to.be.equal(id.toString());
       expect(res.body.token).to.not.be.ok;
       done();
@@ -62,7 +98,10 @@ describe('Polls', () => {
   });
 
   it ('must NOT return a poll by id if is not public', done => {
-    agent.get('/api/polls/' + polls[2]._id).expect(404).end(done);
+    agent.get('/api/polls/' + polls[2]._id).expect(404).end((err, res) => {
+      expectCode(404, res);
+      done();
+    });
   });
 
   it ('must return a poll by id if is not public and the owner request it', done => {
@@ -78,10 +117,10 @@ describe('Polls', () => {
   it ('must always return a poll by token', done => {
 
     agent.get('/api/polls/' + polls[0].token).expect(200).end((err, res) => {
-      expect(res.body._id).to.be.equal(polls[0]._id.toString());
+      expect(res.body.id).to.be.equal(polls[0]._id.toString());
 
       agent.get('/api/polls/' + polls[2].token).expect(200).end((err, res) => {
-        expect(res.body._id).to.be.equal(polls[2]._id.toString());
+        expect(res.body.id).to.be.equal(polls[2]._id.toString());
         done();
       });
     });
@@ -94,7 +133,7 @@ describe('Polls', () => {
 
     agent.post('/api/polls/' + polls[0]._id + '/token').expect(200).end((err, res) => {
       expectCode(200, res);
-      expect(res.body._id).to.be.equal(polls[0]._id.toString());
+      expect(res.body.id).to.be.equal(polls[0]._id.toString());
       expect(res.body.token).to.not.be.equal(prevToken);
 
       passport.restore();
@@ -126,7 +165,7 @@ describe('Polls', () => {
     agent.post('/api/polls').expect(200).send(poll).end((err, res) => {
       let _poll = res.body;
 
-      expect(_poll._id).to.be.ok;
+      expect(_poll.id).to.be.ok;
 
       expect(_poll.token).to.be.ok;
       expect(_poll.token).to.not.be.equal(poll.token);
@@ -146,7 +185,7 @@ describe('Polls', () => {
   });
 
   it ('must allow to update a Poll', done => {
-    const id = newPoll._id;
+    const id = newPoll.id;
     const poll = {
       title: 'hello 1',
       dashboard: 'dash666 2',
@@ -159,7 +198,7 @@ describe('Polls', () => {
     agent.put('/api/polls/' + id).expect(200).send(poll).end((err, res) => {
       let _poll = res.body;
 
-      expect(_poll._id).to.be.equal(id);
+      expect(_poll.id).to.be.equal(id);
       expect(_poll.token).to.be.equal(newPoll.token);
       expect(_poll.dashboard).to.be.equal(newPoll.dashboard);
 
@@ -177,7 +216,7 @@ describe('Polls', () => {
   });
 
   it ('must NOT allow to update a Poll', done => {
-    const id = newPoll._id;
+    const id = newPoll.id;
     passport = cobbler('session', users[1].id);
     agent.put('/api/polls/' + id).expect(403).send({ title: 'will not update' }).end((err, res) => {
       expectCode(403, res);

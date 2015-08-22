@@ -22,6 +22,10 @@ class Store extends FluxStore {
     return [...this._state].map(([k, v]) => _.cloneDeep(v));
   }
 
+  getStateById(id){
+    return _.cloneDeep(this._state.get(id));
+  }
+
   clear(){
     this._state = this.getInitialState();
   }
