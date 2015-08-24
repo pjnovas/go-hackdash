@@ -16,3 +16,144 @@
     }
   }
 }
+
+.polls-ctn {
+
+  text-align: center;
+
+  .card-wrap {
+    width: 100%;
+    max-width: 400px;
+    display: inline-block;
+    margin: 10px 30px;
+
+    .card {
+      text-align: left;
+    }
+
+    @media @xs-and-down {
+      max-width: 100%;
+      margin: 0;
+      margin-bottom: 15px;
+    }
+  }
+}
+
+.poll-header {
+  margin-top: -10px;
+
+  .wrap {
+    background: @background-color-light;
+    color: @text-icons-color;
+    overflow: hidden;
+    position: relative;
+
+    h1 {
+      margin: 10px 0 0 0;
+
+      .label {
+        margin-left: 20px;
+      }
+    }
+
+    h2 {
+      margin: 0;
+      margin-bottom: 5px;
+    }
+
+  }
+
+  .counters {
+    position: absolute;
+    top: 0;
+    right: -20px;
+    height: 100%;
+
+    .count-wrap {
+      position: absolute;
+      top: 0;
+      height: 100%;
+
+      .back {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+
+        width: 150px;
+      	height: 100%;
+      	-webkit-transform: skew(20deg);
+      	   -moz-transform: skew(20deg);
+      	     -o-transform: skew(20deg);
+
+        .title, .count {
+          color: #fff;
+          width: 100%;
+
+          -webkit-transform: skew(-20deg);
+             -moz-transform: skew(-20deg);
+               -o-transform: skew(-20deg);
+        }
+
+        .title {
+          font-size: 25px;
+          position: absolute;
+          bottom: 0;
+          right: 10px;
+          text-transform: uppercase;
+          padding-left: 20px;
+        }
+
+        .count {
+          text-align: center;
+          font-size: 40px;
+          font-weight: 500;
+        }
+      }
+
+      &.projects {
+        .back {
+          background: @projects-color;
+          right: 150px;
+        }
+      }
+
+      &.votes {
+        .back {
+          background: @votes-color;
+        }
+
+        .title {
+          padding-left: 35px;
+        }
+      }
+
+    }
+
+  }
+}
+
+.votes-ctn {
+  text-align: center;
+
+  .card-wrap {
+    .polls-ctn .card-wrap;
+
+    height: 350px;
+
+    .card {
+
+      .triangle {
+        @media @xs-and-down {
+          right: 0;
+          top: 0;
+        }
+      }
+
+      .body {
+        padding-top: 12px;
+        height: 120px;
+      }
+    }
+  }
+}

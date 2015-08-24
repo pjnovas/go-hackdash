@@ -1,6 +1,8 @@
 
-import AppDispatcher from "./AppDispatcher";
+import HackdashDispatcher from "./HackdashDispatcher";
+import PollDispatcher from "./PollDispatcher";
 
 export {
-  AppDispatcher
+  HackdashDispatcher,
+  PollDispatcher
 };

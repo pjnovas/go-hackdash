@@ -1,4 +1,5 @@
 
+import Fingerprint2 from "fingerprintjs2";
 import request from "superagent";
 import { PollActions } from "../actions";
 
@@ -7,6 +8,9 @@ class PollAPI {
   constructor(){
     this.uri = "/api/polls/";
     this.type = "POLL";
+
+    let fp = new Fingerprint2();
+    fp.get( result => this.fingerprint = result );
   }
 
   find() {
@@ -40,7 +44,7 @@ class PollAPI {
 
     request
       .get(this.uri + id + "/votes")
-      .set("fingerprint", "todo")
+      .set("fingerprint", this.fingerprint)
       .end( (err, res) => {
         if (this.errorHandler(err, "findVotes")){
           return;
@@ -91,7 +95,7 @@ class PollAPI {
   vote(id, projectId){
     request
       .post(this.uri + id + "/votes/" + projectId)
-      .set("fingerprint", "todo")
+      .set("fingerprint", this.fingerprint)
       .end( (err, res) => {
         if (this.errorHandler(err, "vote")){
           return;
@@ -104,7 +108,7 @@ class PollAPI {
   unvote(id, projectId){
     request
       .del(this.uri + id + "/votes/" + projectId)
-      .set("fingerprint", "todo")
+      .set("fingerprint", this.fingerprint)
       .end( (err, res) => {
         if (this.errorHandler(err, "unvote")){
           return;

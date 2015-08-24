@@ -26,10 +26,75 @@
   margin: 0 10px;
 
   &:hover, &:active, &:focus {
-    color: @link-color-hover;
     text-decoration: none;
-    border-bottom: 1px solid @link-color-hover;
+
+    color: @text-icons-color!important;
+    background: @link-color!important;
   }
+
+  &.btn-primary {
+    color: @accent-color;
+
+    &:hover, &:active, &:focus {
+      color: @text-icons-color!important;
+      background: @accent-color!important;
+    }
+  }
+
+  &.btn-secondary {
+    color: @primary-color;
+
+    &:hover, &:active, &:focus {
+      color: @text-icons-color!important;
+      background: @primary-color!important;
+    }
+  }
+
+  &.btn-success {
+    color: @btn-success-bg;
+
+    &:hover, &:active, &:focus {
+      color: @text-icons-color!important;
+      background: @btn-success-bg!important;
+    }
+
+    &.voted, &.disabled {
+      color: @text-icons-color!important;
+      background: @btn-success-bg!important;
+    }
+
+    &.disabled {
+      cursor: default;
+    }
+  }
+
+  &.btn-danger {
+    color: @btn-danger-bg;
+
+    &:hover, &:active, &:focus {
+      color: @text-icons-color!important;
+      background: @btn-danger-bg!important;
+    }
+  }
+
+  &.btn-warning {
+    color: @btn-warning-bg;
+
+    &:hover, &:active, &:focus {
+      color: @text-icons-color!important;
+      background: @btn-warning-bg!important;
+    }
+  }
+
+  &.btn-info {
+    color: @btn-info-bg;
+
+    &:hover, &:active, &:focus {
+      color: @text-icons-color!important;
+      background: @btn-info-bg!important;
+    }
+  }
+
 }
 
 .btn-icon {

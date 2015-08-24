@@ -1,12 +1,57 @@
 
 .card {
 
+  position: relative;
   background-color: #fff;
   border-radius: 3px;
   margin-top: 10px;
   margin-bottom: 10px;
 
   .z2;
+
+  h2 {
+    color: @primary-color;
+  }
+
+  .triangle {
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    z-index: 3;
+
+    span {
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: #fff;
+      font-size: 40px;
+      text-align: center;
+      width: 100%;
+      padding-right: 7px;
+      padding-top: 2px;
+      text-indent: 40px;
+      font-weight: 500;
+      z-index: 2;
+    }
+
+    .fa {
+      font-size: 67px;
+      position: absolute;
+      top: -2px;
+      right: -13px;
+      color: darken(@card-triangle-bg, 3%);
+    }
+
+    .triangle-top-right {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 120px 120px 0;
+      border-color: transparent @card-triangle-bg transparent transparent;
+      z-index: 1;
+    }
+
+  }
 
   .header {
     margin-top: 10px;
@@ -53,7 +98,6 @@
   .media {
     min-height: 180px;
     position: relative;
-    border-top: 1px solid @divider-color;
     background-size: cover;
 
     .title {

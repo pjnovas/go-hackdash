@@ -1,38 +1,38 @@
 
-import { AppDispatcher } from "../dispatcher";
+import { PollDispatcher } from "../dispatcher";
 import { PollConstants } from "../constants";
 
 export default {
 
   find() {
-    AppDispatcher.dispatch({
+    PollDispatcher.dispatch({
       type: PollConstants.FIND
     });
   },
 
   findOne(id) {
-    AppDispatcher.dispatch({
+    PollDispatcher.dispatch({
       type: PollConstants.FINDONE,
       id
     });
   },
 
   receive(polls) {
-    AppDispatcher.dispatch({
+    PollDispatcher.dispatch({
       type: PollConstants.RECEIVE,
       polls
     });
   },
 
   create(poll) {
-    AppDispatcher.dispatch({
+    PollDispatcher.dispatch({
       type: PollConstants.CREATE,
       poll
     });
   },
 
   update(id, poll) {
-    AppDispatcher.dispatch({
+    PollDispatcher.dispatch({
       type: PollConstants.UPDATE,
       id,
       poll
@@ -40,14 +40,14 @@ export default {
   },
 
   generateToken(id) {
-    AppDispatcher.dispatch({
+    PollDispatcher.dispatch({
       type: PollConstants.GENERATE_TOKEN,
       id
     });
   },
 
   vote(id, projectId) {
-    AppDispatcher.dispatch({
+    PollDispatcher.dispatch({
       type: PollConstants.VOTE,
       id,
       projectId
@@ -55,7 +55,7 @@ export default {
   },
 
   unvote(id, projectId) {
-    AppDispatcher.dispatch({
+    PollDispatcher.dispatch({
       type: PollConstants.UNVOTE,
       id,
       projectId
@@ -63,7 +63,7 @@ export default {
   },
 
   receiveVotes(id, votes) {
-    AppDispatcher.dispatch({
+    PollDispatcher.dispatch({
       type: PollConstants.RECEIVE_VOTES,
       id,
       votes

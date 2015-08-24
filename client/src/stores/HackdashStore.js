@@ -1,5 +1,5 @@
 
-import { AppDispatcher } from "../dispatcher";
+import { HackdashDispatcher } from "../dispatcher";
 
 import { HackdashConstants } from "../constants";
 import { HackdashAPI } from "../api";
@@ -35,5 +35,5 @@ class HackdashStore extends Store {
 
 };
 
-const instance = new HackdashStore(AppDispatcher);
+const instance = new HackdashStore(HackdashDispatcher);
 export default instance;

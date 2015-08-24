@@ -29,7 +29,7 @@ export default class Polls extends React.Component {
   render() {
 
     return (
-      <div>
+      <div className="polls-ctn">
         <Header />
         { this.state.loading ? __.loading :
           <PollList polls={this.state.polls} />

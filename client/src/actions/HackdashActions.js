@@ -1,39 +1,39 @@
 
-import { AppDispatcher } from "../dispatcher";
+import { HackdashDispatcher } from "../dispatcher";
 import { HackdashConstants } from "../constants";
 
 export default {
 
   find(query) {
-    AppDispatcher.dispatch({
+    HackdashDispatcher.dispatch({
       type: HackdashConstants.FIND,
       query
     });
   },
 
   findOne(domain) {
-    AppDispatcher.dispatch({
+    HackdashDispatcher.dispatch({
       type: HackdashConstants.FINDONE,
       domain
     });
   },
 
   receive(dashboards) {
-    AppDispatcher.dispatch({
+    HackdashDispatcher.dispatch({
       type: HackdashConstants.RECEIVE,
       dashboards
     });
   },
 
   findProjects(domain) {
-    AppDispatcher.dispatch({
+    HackdashDispatcher.dispatch({
       type: HackdashConstants.FIND_PROJECTS,
       domain
     });
   },
 
   receiveProjects(domain, projects) {
-    AppDispatcher.dispatch({
+    HackdashDispatcher.dispatch({
       type: HackdashConstants.RECEIVE_PROJECTS,
       domain,
       projects

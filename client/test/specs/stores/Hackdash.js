@@ -55,7 +55,7 @@ describe("HackdashStore", function(){
 
     it("must call HackdashAPI, fire 2 change events", function(done){
       let dashURL = HackdashAPI.uris.dashboards + dash;
-      let projectsURL = dashURL + "/" + HackdashAPI.uris.projects;
+      let projectsURL = HackdashAPI.uris.base + dash + "/" + HackdashAPI.uris.projects;
 
       server.respondWith("GET", dashURL, [
         200, { "Content-Type": "application/json" },

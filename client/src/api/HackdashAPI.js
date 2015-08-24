@@ -43,7 +43,7 @@ class HackdashAPI {
 
   findProjects(domain) {
     request
-      .get(this.uris.dashboards + domain + "/" + this.uris.projects)
+      .get(this.uris.base + domain + "/" + this.uris.projects)
       .end( (err, res) => {
         if (this.errorHandler(err, "findProjects")){
           return;

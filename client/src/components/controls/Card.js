@@ -17,17 +17,25 @@ export default class Card extends React.Component {
       <Row>
         <Col xs={12} className="card">
 
+          { this.props.hasOwnProperty("triangle") ?
+            <div className="triangle">
+              <div className="triangle-top-right"></div>
+              <span>{this.props.triangle}</span>
+              {this.props.triangleIcon ? <Icon name={this.props.triangleIcon} /> : null}
+            </div>
+          : null }
+
           { this.props.htitle ?
 
             <Row className="header">
 
-              <Col xs={2} sm={1}>
+              <Col xs={2}>
                 <div className="avatar icon">
                   <Icon name={this.props.hicon} />
                 </div>
               </Col>
 
-              <Col xs={10} sm={11} className="content">
+              <Col xs={10} className="content">
                 <h2>{this.props.htitle}</h2>
                 <h3>{this.props.hsubtitle}</h3>
               </Col>

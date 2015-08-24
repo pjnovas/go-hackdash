@@ -36,4 +36,14 @@ export default {
   "polls_card_open": "open",
   "polls_card_edit": "edit",
 
+  "polls_card_project_open": "open",
+  "polls_card_project_vote": "vote",
+  "polls_card_project_unvote": "voted",
+
+  "poll_counter_projects": "Projects",
+  "poll_counter_votes": "Votes",
+
+  "poll_closed": "Closed",
+  "poll_closed_hint": "This poll is closed for voting",
+
 };

@@ -5,6 +5,7 @@
   "author": "Pablo Novas <pjnovas@gmail.com>",
   "dependencies": {
     "bootstrap": "^3.3.5",
+    "fingerprintjs2": "^0.7.3",
     "flux": "^2.1.1",
     "jquery": "^2.1.4",
     "moment": "^2.10.3",

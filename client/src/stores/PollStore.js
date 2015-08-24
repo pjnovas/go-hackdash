@@ -1,5 +1,5 @@
 
-import { AppDispatcher } from "../dispatcher";
+import { PollDispatcher } from "../dispatcher";
 
 import { PollConstants } from "../constants";
 import { PollAPI } from "../api";
@@ -48,5 +48,5 @@ class PollStore extends Store {
 
 };
 
-const instance = new PollStore(AppDispatcher);
+const instance = new PollStore(PollDispatcher);
 export default instance;

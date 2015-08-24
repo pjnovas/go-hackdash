@@ -21,14 +21,16 @@ export default class PollList extends React.Component {
   render() {
 
     return (
-      <Grid>
+      <Grid fluid>
 
         <Row>
           <Col xs={12}>
             { this.props.polls.map(poll => {
               return (
-                <PollItem key={poll.id} poll={poll}
-                  onEditClicked={ id => this.showEdit(id) }/>
+                <div className="card-wrap">
+                  <PollItem key={poll.id} poll={poll}
+                    onEditClicked={ id => this.showEdit(id) }/>
+                </div>
               );
             })}
           </Col>
