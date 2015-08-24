@@ -23,19 +23,30 @@
 
   .card-wrap {
     width: 100%;
-    max-width: 400px;
     display: inline-block;
-    margin: 10px 30px;
 
     .card {
       text-align: left;
     }
 
-    @media @xs-and-down {
-      max-width: 100%;
-      margin: 0;
-      margin-bottom: 15px;
+    // XS
+    max-width: 100%;
+    margin: 0;
+    margin-bottom: 15px;
+
+    @media @sm-and-up {
+      max-width: 450px;
+      margin: 10px 30px;
     }
+
+    @media @md-and-up {
+      max-width: 300px;
+    }
+
+    @media @lg-and-up {
+      max-width: 350px;
+    }
+
   }
 }
 
@@ -59,6 +70,10 @@
     h2 {
       margin: 0;
       margin-bottom: 5px;
+
+      a {
+        color: darken(@text-icons-color, 5%);
+      }
     }
 
   }
@@ -69,30 +84,38 @@
     right: -20px;
     height: 100%;
 
+    @media @xs-and-down {
+      position: static;
+      width: 110%;
+      height: 90px;
+      margin-left: -15px;
+    }
+
     .count-wrap {
       position: absolute;
       top: 0;
       height: 100%;
 
+      @media @xs-and-down {
+        position: static;
+        display: inline-block;
+        width: 50%;
+      }
+
       .back {
-        position: absolute;
-        top: 0;
-        right: 0;
-        z-index: 1;
-
-        width: 150px;
       	height: 100%;
-      	-webkit-transform: skew(20deg);
-      	   -moz-transform: skew(20deg);
-      	     -o-transform: skew(20deg);
+        width: 100%;
 
-        .title, .count {
-          color: #fff;
-          width: 100%;
+        @media @sm-and-up {
+          position: absolute;
+          top: 0;
+          right: 0;
+          z-index: 1;
 
-          -webkit-transform: skew(-20deg);
-             -moz-transform: skew(-20deg);
-               -o-transform: skew(-20deg);
+          width: 150px;
+        	-webkit-transform: skew(20deg);
+        	   -moz-transform: skew(20deg);
+        	     -o-transform: skew(20deg);
         }
 
         .title {
@@ -109,6 +132,25 @@
           font-size: 40px;
           font-weight: 500;
         }
+
+        .title, .count {
+          color: #fff;
+          width: 100%;
+
+          @media @sm-and-up {
+            -webkit-transform: skew(-20deg);
+               -moz-transform: skew(-20deg);
+                 -o-transform: skew(-20deg);
+          }
+
+          @media @xs-and-down {
+            position: static;
+            padding-left: 0!important;
+            text-align: center;
+          }
+
+        }
+
       }
 
       &.projects {

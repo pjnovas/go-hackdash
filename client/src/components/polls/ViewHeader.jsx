@@ -15,6 +15,9 @@ export default class PollViewHeader extends React.Component {
     let poll = this.props.poll;
     let dashboard = this.props.dashboard;
 
+    let baseURI = "https://hackdash.org";
+    let dashURI = baseURI + "/dashboards/" + poll.dashboard;
+
     let isClosed = !poll.open;
 
     let votes = poll && poll.votes || [];
@@ -36,19 +39,21 @@ export default class PollViewHeader extends React.Component {
               </OverlayTrigger>
             : null }
           </h1>
-          <h2>{poll.dashboard}</h2>
+          <h2>
+            <a href={dashURI} target="_blank">{poll.dashboard}</a>
+          </h2>
 
           <div className="counters">
             <div className="count-wrap projects">
               <div className="back">
-                <div className="title">{__.poll_counter_projects}</div>
                 <div className="count">{cProjects}</div>
+                <div className="title">{__.poll_counter_projects}</div>
               </div>
             </div>
             <div className="count-wrap votes">
               <div className="back">
-                <div className="title">{__.poll_counter_votes}</div>
                 <div className="count">{cVotes}</div>
+                <div className="title">{__.poll_counter_votes}</div>
               </div>
             </div>
           </div>
