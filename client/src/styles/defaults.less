@@ -2,6 +2,11 @@
   outline: 0 none !important;
 }
 
+html, body, #app, #app>div {
+  height: 100%;
+  width: 100%;
+}
+
 body {
   background: @background-color;
   padding-top: 60px;
@@ -20,6 +25,12 @@ body, h1, h2, h3, h4, h5, h6,
 
 label {
   font-weight: normal;
+}
+
+.text-vcenter {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .ellipsis {

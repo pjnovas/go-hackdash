@@ -5,6 +5,8 @@ export default {
   "full_datetime_format": "MM/DD/YYYY HH:mm",
 
   "app_title": "Hackdash Challenge",
+  "landing_legend": "a voting system for hackathons",
+  "landing_create_poll": "Create a Poll",
 
   "login": "Login",
   "back": "Back",
