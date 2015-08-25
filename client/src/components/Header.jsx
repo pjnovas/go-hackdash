@@ -1,12 +1,24 @@
 
+import { Link } from "react-router";
 import { NavItemLink } from "react-router-bootstrap";
-import { Navbar, Nav } from "react-bootstrap";
-import { Icon, Avatar } from './controls';
+import { Navbar, Nav, NavItem } from "react-bootstrap";
+import { Icon, Avatar } from "./controls";
+
+import LoginModal from "./account/LoginModal.jsx";
 
 export default class Header extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = Header.defaultState;
+  }
+
+  showLoginModal() {
+    this.setState({ showLogin: true });
+  }
+
   render() {
-    let profilePic = window.user ? window.user.picture : null;
+    let isLogin = window.user ? true : false;
     let css = this.props.flat ? "no-shadow" : "z2";
 
     return (
@@ -14,7 +26,7 @@ export default class Header extends React.Component {
 
       {(this.props.backto ?
         <ul className="nav navbar-nav navbar-left">
-          <NavItemLink className="navbar-back" to={this.props.backto} params={this.props.backparams}>
+          <NavItemLink className="navbar-icon" to={this.props.backto} params={this.props.backparams}>
             <Icon name="arrow-left" />
           </NavItemLink>
         </ul>
@@ -24,14 +36,45 @@ export default class Header extends React.Component {
         <li className="navbar-brand">{this.props.title || __.app_title}</li>
       </ul>
 
-      {(this.props.hideprofile ? null :
+      { isLogin ?
         <ul className="nav navbar-nav navbar-right">
-          <Avatar src={profilePic} />
-        </ul>
-      )}
+          <li className="dropdown">
 
-    </Navbar>
+            <a className="dropdown-toggle user-pic" data-toggle="dropdown">
+              <Avatar src={window.user.picture} />
+            </a>
+
+            <ul className="dropdown-menu dropdown-menu-right">
+              <li>
+                <Link to="polls">{__.account_mypolls}</Link>
+              </li>
+              <li>
+                <a href="/logout">{__.account_logout}</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      :
+        <ul className="nav navbar-nav navbar-right">
+          <NavItem className="login-link" onClick={ () => this.showLoginModal() }>
+            {__.account_login}
+          </NavItem>
+        </ul>
+      }
+
+      {this.state.showLogin ?
+      <LoginModal
+        show={this.state.showLogin}
+        onClose={ () => this.setState({ showLogin: false }) } />
+      : null }
+
+      </Navbar>
     );
 
   }
+};
+
+Header.displayName = "Header";
+Header.defaultState = {
+  showLogin: false
 };

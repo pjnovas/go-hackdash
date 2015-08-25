@@ -2,6 +2,8 @@
 import { Button, Grid, Row, Col } from "react-bootstrap";
 import { Icon, Paper, Divider } from "../controls";
 
+import LoginButtons from "./LoginButtons.jsx";
+
 export default class Login extends React.Component {
 
   constructor(props) {
@@ -10,12 +12,6 @@ export default class Login extends React.Component {
   }
 
   render() {
-
-    if (this.state.redirect){
-      for (let p in uris){
-        uris[p] += "?redirect=" + this.state.redirect;
-      }
-    }
 
     return (
       <Grid>
@@ -28,22 +24,8 @@ export default class Login extends React.Component {
 
             <Row>
 
-              <Col xs={12}>
-                <h3>{__.account_title_social}</h3>
-              </Col>
-
-              <Col xs={8} xsOffset={2} md={6} mdOffset={3} className="text-center">
-
-                { this.state.providers.map( provider => {
-                  return (
-                    <Button key={provider}
-                      href={"/auth/" + provider}
-                      className={"btn-social " + provider}>
-                      <Icon name={provider} />
-                    </Button>
-                  );
-                }) }
-
+              <Col xs={8} xsOffset={2} md={6} mdOffset={3}>
+                <LoginButtons />
               </Col>
             </Row>
 

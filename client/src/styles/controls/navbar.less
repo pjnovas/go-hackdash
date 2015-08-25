@@ -32,9 +32,54 @@ nav {
   &.navbar-right {
     float: right!important;
   }
+
+  >li>a {
+    padding-top: 10px!important;
+    padding-bottom: 10px!important;
+  }
+
+  .dropdown-menu {
+    background: @nav-bar-bg-color;
+
+    .dropdown-menu .divider {
+      border-bottom: 1px solid #E3E3E3;
+    }
+
+    >li>a {
+      &:hover, &:focus {
+        color: @nav-bar-text-color;
+        background-color: @primary-light-color;
+      }
+    }
+  }
+
+  .user-pic {
+    cursor: pointer;
+  }
+
 }
 
-.navbar-back {
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: @nav-bar-text-color;
+  background-color: transparent;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  background-color: @primary-light-color;
+  color: @nav-bar-text-color;
+}
+
+.navbar-nav .login-link {
+  font-size: 22px;
+  font-weight: 400;
+  padding-top: 5px!important;
+  padding-bottom: 5px!important;
+}
+
+.navbar-icon {
   >a {
 
     @media @xs-and-down {

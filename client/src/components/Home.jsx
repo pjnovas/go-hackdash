@@ -9,14 +9,24 @@ import {Link, Element} from 'react-scroll';
 
 export default class Home extends React.Component {
 
-  onCreateClick() {
+  constructor(props) {
+    super(props);
+    this.state = Home.defaultState;
+  }
 
+  onCreateClick() {
+    if (window.user){
+      window.app.router.transitionTo("polls");
+    }
+    else {
+      this.refs.header.showLoginModal();
+    }
   }
 
   render() {
     return (
       <div className="landing">
-        <Header hideprofile={true} />
+        <Header ref="header" />
 
         <div className="landing-header">
           <div className="text-vcenter call-action">
@@ -57,15 +67,7 @@ export default class Home extends React.Component {
 
 };
 
-/*
-
-<Row>
-
-  <Col xs={12}>
-    <Button bsSize="large" className="btn-create">
-      {__.landing_create_poll}
-    </Button>
-  </Col>
-
-</Row>
-*/
+Home.displayName = "Home";
+Home.defaultState = {
+  showLogin: false
+};

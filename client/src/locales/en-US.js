@@ -20,6 +20,8 @@ export default {
   "loading": "loading ...",
 
   "account_login": "Login",
+  "account_logout": "Logout",
+  "account_mypolls": "My Polls",
 
   "polls_create_title": "Create a Poll",
   "polls_edit_title": "Editing Poll for {1}",
