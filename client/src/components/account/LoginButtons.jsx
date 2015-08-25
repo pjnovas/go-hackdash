@@ -11,10 +11,9 @@ export default class LoginButtons extends React.Component {
 
   render() {
 
+    let redirect = "";
     if (this.state.redirect){
-      for (let p in uris){
-        uris[p] += "?redirect=" + this.state.redirect;
-      }
+      redirect += "?redirect=" + this.state.redirect;
     }
 
     return (
@@ -22,7 +21,7 @@ export default class LoginButtons extends React.Component {
       { this.state.providers.map( provider => {
         return (
           <Button key={provider}
-            href={"/auth/" + provider}
+            href={"/auth/" + provider + redirect}
             className={"btn-social " + provider}>
             <Icon name={provider} />
           </Button>
@@ -37,5 +36,5 @@ export default class LoginButtons extends React.Component {
 LoginButtons.displayName = "LoginButtons";
 LoginButtons.defaultState = {
   providers: window.__settings.providers || [],
-  redirect: window.redirect || ""
+  redirect: window.redirect || "/polls"
 };

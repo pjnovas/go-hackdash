@@ -19,7 +19,7 @@ export default {
   "edit": "Edit",
   "loading": "loading ...",
 
-  "account_login": "Login",
+  "account_login": "Create a Poll",
   "account_logout": "Logout",
   "account_mypolls": "My Polls",
 
