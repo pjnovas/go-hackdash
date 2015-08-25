@@ -22,6 +22,7 @@ export default class PollView extends React.Component {
 
   componentDidMount() {
     this.evChangePoll = PollStore.addListener(this.onChangePolls.bind(this));
+    this.evErrorPoll = PollStore.onError(this.onError.bind(this));
     this.evChangeHackdash = HackdashStore.addListener(this.onChangeHackdash.bind(this));
 
     PollActions.findOne(this.props.params.id);
@@ -29,7 +30,14 @@ export default class PollView extends React.Component {
 
   componentWillUnmount() {
     this.evChangePoll.remove();
+    this.evErrorPoll.remove();
     this.evChangeHackdash.remove();
+  }
+
+  onError(error){
+    if (error.status === 404){
+      window.app.router.transitionTo("notfound");
+    }
   }
 
   onChangePolls(){

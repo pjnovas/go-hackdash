@@ -74,6 +74,13 @@ export default {
     PollDispatcher.dispatch({
       type: PollConstants.LATEST
     });
+  },
+
+  error(data){
+    PollDispatcher.dispatch({
+      type: PollConstants.ERROR,
+      data
+    });
   }
 
 };

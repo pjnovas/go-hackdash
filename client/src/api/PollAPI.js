@@ -139,8 +139,7 @@ class PollAPI {
 
     if (err) {
 
-      /* trigger error action
-      this.emit("error", {
+      PollActions.error({
         api: this.type,
         type,
         status: err.status,
@@ -148,7 +147,6 @@ class PollAPI {
         body: err.response.body,
         text: err.response.text,
       });
-      */
 
       return true;
     }

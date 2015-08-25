@@ -57,6 +57,9 @@ class PollStore extends Store {
       case PollConstants.UNVOTE:
         PollAPI.unvote(action.id, action.projectId);
         break;
+      case PollConstants.ERROR:
+        this.throwError(action.data);
+        break;
     }
   }
 

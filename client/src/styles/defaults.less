@@ -64,3 +64,46 @@ label {
 .max-w160 {
   max-width: 160px;
 }
+
+.full-screen-section {
+  display: table;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.call-action {
+
+  width: 100%;
+  height: 100%;
+  color: @text-icons-color;
+  display: table-cell;
+
+  .logo {
+    background: url(@logo-url) no-repeat;
+    width: 120px;
+    height: 145px;
+    margin: -50px auto 50px auto;
+    background-size: 100%;
+    display: inline-block;
+
+    @media (max-width: 500px) {
+      margin: 0 auto;
+      width: 80px;
+      height: 105px;
+    }
+  }
+
+  h1 {
+    font-size: 70px;
+    margin: 0;
+  }
+
+  h2 {
+    display: inline-block;
+    font-size: 35px;
+    padding: 0 2%;
+    margin: 2% 0;
+  }
+
+}

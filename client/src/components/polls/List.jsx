@@ -40,7 +40,7 @@ export default class PollList extends React.Component {
         <Row>
           <Col xs={12}>
             { !this.props.polls.length ?
-              <span>{__.polls_empty_legend}</span>
+              <p className="empty-polls">{__.polls_empty_legend}</p>
             : null }
           </Col>
         </Row>

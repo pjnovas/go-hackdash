@@ -7,10 +7,20 @@ class Store extends FluxStore {
   constructor(dispatcher) {
     super(dispatcher);
 
+    this.__errorEvent = "error";
+
     this.idAttr = this.idAttr || "id";
     this.childIdAttr = this.childIdAttr || "id";
 
     this._state = this.getInitialState();
+  }
+
+  onError(callback) {
+    return this.__emitter.addListener(this.__errorEvent, callback);
+  }
+
+  throwError(data){
+    this.__emitter.emit(this.__errorEvent, data);
   }
 
   getInitialState() {

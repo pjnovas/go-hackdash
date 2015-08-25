@@ -4,5 +4,6 @@ export default builder("POLL", [
   "GENERATE_TOKEN",
   "VOTE",
   "UNVOTE",
-  "LATEST"
+  "LATEST",
+  "ERROR"
 ], true);

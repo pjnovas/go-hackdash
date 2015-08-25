@@ -10,6 +10,9 @@ export default {
   "landing_create_poll": "Create a Poll",
   "landing_latest_polls": "Latest Polls",
 
+  "notfound_message": "uhm .. nothing to vote here",
+  "notfound_go_home": "go to home",
+
   "login": "Login",
   "back": "Back",
   "close": "Close",
@@ -26,7 +29,7 @@ export default {
   "polls_create_title": "Create a Poll",
   "polls_edit_title": "Editing Poll for {1}",
 
-  "polls_empty_legend": "No polls created yet, to create one click on the plus button at the bottom right",
+  "polls_empty_legend": "You have no polls yet, to create one click on the plus button at the bottom right",
   "poll_dashboard_domain": "Hackdash Dashboard Name",
   "poll_dashboard_domain_hint": "5-10 chars",
   "poll_title": "Poll Title",
