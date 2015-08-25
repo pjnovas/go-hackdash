@@ -11,7 +11,7 @@ export default class PollItem extends React.Component {
     let model = this.props.poll;
 
     let actions = [
-      (<ButtonLink bsStyle="link" to="poll" params={{ id: model.id }}>
+      (<ButtonLink bsStyle="link" className="pull-right" to="poll" params={{ id: model.id }}>
         {__.polls_card_open}
       </ButtonLink>)
     ];

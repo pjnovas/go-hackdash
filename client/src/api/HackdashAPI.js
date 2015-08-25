@@ -18,7 +18,7 @@ class HackdashAPI {
 
   find(query){
     request
-      .get(this.uris.dashboards + "?q=" + query)
+      .get(this.uris.dashboards + "?q=" + query + "&limit=6")
       .end( (err, res) => {
         if (this.errorHandler(err, "find")){
           return;

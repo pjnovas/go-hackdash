@@ -1,4 +1,6 @@
 
+import SearchDashboard from "../dashboard/Search.jsx";
+
 import { Input, Row, Col, FormControls, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Divider, Icon } from "../controls";
 
@@ -14,6 +16,11 @@ export default class PollForm extends React.Component {
     this.props.onChange(prop, value);
   }
 
+  onChangeDashboard(dashboard){
+    this.props.onChange("dashboard", dashboard.domain);
+    this.props.onChange("title", dashboard.title || "");
+  }
+
   render() {
     let pollURI = window.location.origin + "/polls/" + this.props.token;
 
@@ -24,12 +31,14 @@ export default class PollForm extends React.Component {
           <Col xs={12} sm={10} smOffset={1}>
 
             { this.props.id ?
-              <FormControls.Static label={__.poll_dashboard_domain} value={this.props.dashboard}/>
+              <div className="dashboard-domain">
+                <FormControls.Static
+                  label={__.poll_dashboard_domain} value={this.props.dashboard}/>
+              </div>
             :
-              <Input type="text" label={__.poll_dashboard_domain}
+              <SearchDashboard label={__.poll_dashboard_domain}
                 placeholder={__.poll_dashboard_domain_hint}
-                onChange={ e => this.changeProp("dashboard", e.target.value) }
-                value={this.props.dashboard} />
+                onSelect={ dashboard => this.onChangeDashboard(dashboard) }/>
             }
 
             <Input type="text" label={__.poll_title}
@@ -41,14 +50,18 @@ export default class PollForm extends React.Component {
               checked={this.props.isPublic ? true : false }
               onChange={ e => this.changeProp("isPublic", e.target.checked) }/>
 
+            <p className="info text-muted">{__.poll_isPublic_hint}</p>
+
             <Input type="checkbox" label={__.poll_open}
               checked={this.props.open ? true : false }
               onChange={ e => this.changeProp("open", e.target.checked) }/>
 
+            <p className="info text-muted">{__.poll_open_hint}</p>
+
 
           { this.props.id && this.props.token ?
             <form className="form-horizontal">
-              <Divider/>
+              <Divider />
 
               <FormControls.Static labelClassName="col-xs-3" wrapperClassName="col-xs-9"
                 label={__.poll_access_via_url}>
@@ -61,6 +74,9 @@ export default class PollForm extends React.Component {
                 </OverlayTrigger>
 
               </FormControls.Static>
+
+              <p className="info centered text-muted">{__.poll_token_refresh}</p>
+
             </form>
           : null }
 

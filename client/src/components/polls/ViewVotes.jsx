@@ -45,7 +45,7 @@ export default class PollViewVotes extends React.Component {
 
   render() {
     let poll = this.props.poll;
-    let pollId = poll.id;
+    let pollId = poll.isPublic ? poll.id : poll.token;
     let canVote = poll && poll.open ? true : false;
     this.state.projectVotes.sort((a, b) => b.votes - a.votes);
 

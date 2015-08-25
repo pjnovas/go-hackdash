@@ -1,5 +1,6 @@
 
 .poll-form {
+
   form.form-horizontal {
     .form-group {
       margin-bottom: 0;
@@ -15,6 +16,61 @@
 
     }
   }
+
+  .form-control {
+    color: #2B2B2B;
+  }
+
+  .info {
+    font-style: italic;
+    margin-top: -15px;
+    margin-bottom: 15px;
+    margin-left: 20px;
+    margin: -15px 10px 15px 20px;
+
+    &.centered {
+      margin: 0;
+      text-align: center;
+    }
+  }
+
+  .dashboard-domain {
+    .form-control-static {
+      background: @primary-dark-color;
+      color: @text-icons-color;
+      max-width: 100px;
+      border-radius: 4px;
+      text-align: center;
+      font-size: 17px;
+      font-weight: 400;
+    }
+  }
+}
+
+.dashboard-typeahead {
+
+  .form-control {
+    max-width: 100px;
+  }
+
+  .dropdown-menu {
+    width: 100%;
+
+    li {
+      a {
+        cursor: pointer;
+
+        span {
+          margin-left: 5px;
+        }
+
+        label {
+          color: @primary-dark-color;
+        }
+      }
+    }
+  }
+
 }
 
 .polls-ctn {

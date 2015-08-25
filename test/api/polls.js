@@ -118,9 +118,11 @@ describe('Polls', () => {
 
     agent.get('/api/polls/' + polls[0].token).expect(200).end((err, res) => {
       expect(res.body.id).to.be.equal(polls[0]._id.toString());
+      expect(res.body.token).to.be.equal(polls[0].token);
 
       agent.get('/api/polls/' + polls[2].token).expect(200).end((err, res) => {
         expect(res.body.id).to.be.equal(polls[2]._id.toString());
+        expect(res.body.token).to.be.equal(polls[2].token);
         done();
       });
     });

@@ -49,11 +49,15 @@ class PollAPI {
         }
 
         PollActions.receive(res.body);
-        this.findVotes(res.body.id);
+        this.findVotes(id);
       });
   }
 
   findVotes(id){
+
+    if (!this.fingerprint){
+      return setTimeout(() => this.findVotes(id), 1000);
+    }
 
     request
       .get(this.uri + id + "/votes")

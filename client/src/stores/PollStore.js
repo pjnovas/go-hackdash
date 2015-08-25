@@ -13,6 +13,17 @@ class PollStore extends Store {
     this.childIdAttr = "projectId";
   }
 
+  findId(id){
+    let poll = this.getStateById(id);
+
+    if (!poll){ // try to find by Token
+      let polls = this.getState();
+      poll = _.findWhere(polls, { token: id });
+    }
+
+    return poll.id;
+  }
+
   __onDispatch(action) {
 
     switch (action.type) {
@@ -29,7 +40,7 @@ class PollStore extends Store {
         this.__changed = this.addItems(action.polls);
         break;
       case PollConstants.RECEIVE_VOTES:
-        this.mergeChild(action.id, action.votes, "votes");
+        this.mergeChild(this.findId(action.id), action.votes, "votes");
         break;
       case PollConstants.CREATE:
         PollAPI.create(action.poll);
