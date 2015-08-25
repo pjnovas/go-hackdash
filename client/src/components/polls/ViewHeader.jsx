@@ -16,7 +16,7 @@ export default class PollViewHeader extends React.Component {
     let dashboard = this.props.dashboard;
 
     let baseURI = "https://hackdash.org";
-    let dashURI = baseURI + "/dashboards/" + poll.dashboard;
+    let dashURI = baseURI + "/dashboards/" + poll && poll.dashboard;
 
     let isClosed = !poll.open;
 

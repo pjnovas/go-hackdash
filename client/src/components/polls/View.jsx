@@ -1,4 +1,6 @@
 
+import _ from 'lodash';
+
 import {PollActions} from "../../actions";
 import {PollStore} from '../../stores';
 
@@ -32,6 +34,17 @@ export default class PollView extends React.Component {
 
   onChangePolls(){
     let poll = PollStore.getStateById(this.props.params.id);
+
+    if (!poll){
+      // try to find by Token
+      let polls = PollStore.getState();
+      poll = _.findWhere(polls, { token: this.props.params.id });
+
+      if (!poll){
+        throw new Error('Could not find the Poll');
+      }
+    }
+
     this.setState({ poll, loading: false });
 
     let dash = this.state.poll.dashboard;

@@ -7,7 +7,12 @@ export default class Card extends React.Component {
   render() {
     let media;
 
-    if (this.props.media){
+    if (this.props.media === true){
+      media = {
+        backgroundColor: "#3e464c"
+      };
+    }
+    else if (this.props.media){
       media = {
         backgroundImage: "url(" + this.props.media + ")"
       };
@@ -31,7 +36,8 @@ export default class Card extends React.Component {
 
               <Col xs={2}>
                 <div className="avatar icon">
-                  <Icon name={this.props.hicon} />
+                {this.props.hicon ? <Icon name={this.props.hicon} /> : null }
+                {this.props.hletter ? <i className="letter">{this.props.hletter}</i> : null }
                 </div>
               </Col>
 

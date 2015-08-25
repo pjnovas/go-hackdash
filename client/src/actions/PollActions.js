@@ -68,6 +68,12 @@ export default {
       id,
       votes
     });
+  },
+
+  latest() {
+    PollDispatcher.dispatch({
+      type: PollConstants.LATEST
+    });
   }
 
 };

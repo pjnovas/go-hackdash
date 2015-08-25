@@ -13,14 +13,20 @@ export default class PollItem extends React.Component {
     let actions = [
       (<ButtonLink bsStyle="link" to="poll" params={{ id: model.id }}>
         {__.polls_card_open}
-      </ButtonLink>),
-      (<Button bsStyle="link" onClick={ () => this.props.onEditClicked(model.id) }>
-        {__.polls_card_edit}
-      </Button>)
+      </ButtonLink>)
     ];
+
+    if (!this.props.readOnly){
+      actions.push(
+        <Button bsStyle="link" onClick={ () => this.props.onEditClicked(model.id) }>
+          {__.polls_card_edit}
+        </Button>
+      );
+    }
 
     return (
       <Card
+        hletter={model.title.charAt(0)}
         htitle={model.title}
         hsubtitle={model.dashboard}
         actions={(actions)}>

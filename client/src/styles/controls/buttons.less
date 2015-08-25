@@ -130,3 +130,26 @@
     background-color: @google;
   }
 }
+
+.btn-create, .btn-continue {
+  background-color: @primary-dark-color;
+  color: @text-icons-color!important;
+  border: none;
+
+  &:hover, &:active, &:focus {
+    color: @text-icons-color!important;
+    background: @primary-color!important;
+  }
+}
+
+.btn-continue {
+  border-radius: 50%;
+  padding: 6px;
+  font-size: 40px;
+  margin-top: 30px;
+
+  @media (max-width: 500px) {
+    margin: 10px;
+  }
+
+}

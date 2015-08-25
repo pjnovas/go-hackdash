@@ -13,6 +13,19 @@ class PollAPI {
     fp.get( result => this.fingerprint = result );
   }
 
+  latest() {
+
+    request
+      .get(this.uri + "latest")
+      .end( (err, res) => {
+        if (this.errorHandler(err, "latest")){
+          return;
+        }
+
+        PollActions.receive(res.body);
+      });
+  }
+
   find() {
 
     request

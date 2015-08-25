@@ -3,5 +3,6 @@ export default builder("POLL", [
   "RECEIVE_VOTES",
   "GENERATE_TOKEN",
   "VOTE",
-  "UNVOTE"
+  "UNVOTE",
+  "LATEST"
 ], true);

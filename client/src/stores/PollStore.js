@@ -16,6 +16,9 @@ class PollStore extends Store {
   __onDispatch(action) {
 
     switch (action.type) {
+      case PollConstants.LATEST:
+        PollAPI.latest();
+        break;
       case PollConstants.FIND:
         PollAPI.find();
         break;

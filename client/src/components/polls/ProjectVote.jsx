@@ -57,13 +57,18 @@ export default class ProjectVote extends React.Component {
       </Button>
     );
 
+    let picUrl = baseURI + model.cover;
+    if (!model.cover){
+      picUrl = true;
+    }
+
     return (
       <Card
         triangle={model.votes}
         triangleIcon="thumbs-up"
         title={model.title}
         description={model.description}
-        media={ baseURI + model.cover }
+        media={picUrl}
         actions={(actions)}>
       </Card>
     );

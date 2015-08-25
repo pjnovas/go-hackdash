@@ -28,7 +28,7 @@ export default class PollList extends React.Component {
             { this.props.polls.map(poll => {
               return (
                 <div className="card-wrap">
-                  <PollItem key={poll.id} poll={poll}
+                  <PollItem key={poll.id} poll={poll} readOnly={this.props.readOnly}
                     onEditClicked={ id => this.showEdit(id) }/>
                 </div>
               );
@@ -36,6 +36,7 @@ export default class PollList extends React.Component {
           </Col>
         </Row>
 
+        { this.props.readOnly ? null :
         <Row>
           <Col xs={12}>
             { !this.props.polls.length ?
@@ -43,9 +44,12 @@ export default class PollList extends React.Component {
             : null }
           </Col>
         </Row>
+        }
 
+        { this.props.readOnly ? null :
         <ActionButton bsStyle="primary" icon="plus"
           onClick={ () => this.setState({ showPollModal: true }) } />
+        }
 
         {this.state.showPollModal ?
         <PollModal

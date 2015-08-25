@@ -1,10 +1,17 @@
 
 import Header from "./Header.jsx";
+import Latest from "./polls/Latest.jsx";
 
 import { Grid, Row, Col, Button } from "react-bootstrap";
 import { Icon } from "./controls";
 
+import {Link, Element} from 'react-scroll';
+
 export default class Home extends React.Component {
+
+  onCreateClick() {
+
+  }
 
   render() {
     return (
@@ -23,15 +30,25 @@ export default class Home extends React.Component {
 
               <Row>
                 <Col xs={12}>
-                  <Button bsSize="large" className="btn-continue">
-                    <Icon name="angle-down" />
-                  </Button>
+                  <Link to="latests" spy={true} smooth={true} duration={1000} offset={-55}>
+                    <Button bsSize="large" className="btn-continue">
+                      <Icon name="angle-down" />
+                    </Button>
+                  </Link>
                 </Col>
               </Row>
 
             </Grid>
 
           </div>
+        </div>
+
+        <Element name="latests" className="latest-polls">
+          <Latest onCreateClick={ () => this.onCreateClick() } />
+        </Element>
+
+        <div className="footer">
+
         </div>
 
       </div>
