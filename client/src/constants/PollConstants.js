@@ -5,5 +5,7 @@ export default builder("POLL", [
   "VOTE",
   "UNVOTE",
   "LATEST",
-  "ERROR"
+  "ERROR",
+  "JOIN_ROOM",
+  "LEAVE_ROOM"
 ], true);

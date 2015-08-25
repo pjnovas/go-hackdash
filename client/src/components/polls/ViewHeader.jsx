@@ -3,6 +3,7 @@ import {PollActions} from "../../actions";
 
 import { ButtonLink } from "react-router-bootstrap";
 import { Button, Row, Col, OverlayTrigger, Tooltip, Label } from "react-bootstrap";
+import {Icon} from "../controls";
 
 export default class PollViewHeader extends React.Component {
 
@@ -41,6 +42,17 @@ export default class PollViewHeader extends React.Component {
           </h1>
           <h2>
             <a href={dashURI} target="_blank">{poll.dashboard}</a>
+
+            <OverlayTrigger placement='bottom' overlay={(
+                <Tooltip>{ this.props.autosort ? __.polls_autosort_enabled : __.polls_autosort_disabled }</Tooltip>
+              )}>
+
+              <a onClick={ () => this.props.onToggleAutoSort() }
+                className={ this.props.autosort ? "autosort-enabled" : "autosort-disabled" } >
+                  <Icon name="sort-numeric-desc" />
+              </a>
+            </OverlayTrigger>
+
           </h2>
 
           <div className="counters">

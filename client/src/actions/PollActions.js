@@ -81,6 +81,20 @@ export default {
       type: PollConstants.ERROR,
       data
     });
+  },
+
+  joinRoom(id) {
+    PollDispatcher.dispatch({
+      type: PollConstants.JOIN_ROOM,
+      id
+    });
+  },
+
+  leaveRoom(id) {
+    PollDispatcher.dispatch({
+      type: PollConstants.LEAVE_ROOM,
+      id
+    });
   }
 
 };

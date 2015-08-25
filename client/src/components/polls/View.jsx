@@ -1,15 +1,15 @@
 
-import _ from 'lodash';
+import _ from "lodash";
 
 import {PollActions} from "../../actions";
-import {PollStore} from '../../stores';
+import {PollStore} from "../../stores";
 
 import {HackdashActions} from "../../actions";
-import {HackdashStore} from '../../stores';
+import {HackdashStore} from "../../stores";
 
 import Header from "../Header.jsx";
-import PollHeader from './ViewHeader.jsx';
-import PollVotes from './ViewVotes.jsx';
+import PollHeader from "./ViewHeader.jsx";
+import PollVotes from "./ViewVotes.jsx";
 
 import { Grid } from "react-bootstrap";
 
@@ -32,6 +32,8 @@ export default class PollView extends React.Component {
     this.evChangePoll.remove();
     this.evErrorPoll.remove();
     this.evChangeHackdash.remove();
+
+    PollActions.leaveRoom(this.props.params.id);
   }
 
   onError(error){
@@ -49,7 +51,7 @@ export default class PollView extends React.Component {
       poll = _.findWhere(polls, { token: this.props.params.id });
 
       if (!poll){
-        throw new Error('Could not find the Poll');
+        throw new Error("Could not find the Poll");
       }
     }
 
@@ -60,6 +62,8 @@ export default class PollView extends React.Component {
       this.setState({ fetchingDashboard: true });
       HackdashActions.findOne(dash);
     }
+
+    setTimeout(() => PollActions.joinRoom(poll.id), 100);
   }
 
   onChangeHackdash(){
@@ -69,6 +73,10 @@ export default class PollView extends React.Component {
     if (dashboard.projects){
       this.setState({ dashboard, loadingDashboard: false });
     }
+  }
+
+  onToggleAutoSort() {
+    this.setState({ autosort: !this.state.autosort })
   }
 
   render() {
@@ -83,11 +91,12 @@ export default class PollView extends React.Component {
         <Header />
 
         { this.state.loading ? __.loading :
-          <PollHeader poll={poll} dashboard={dash} />
+          <PollHeader poll={poll} dashboard={dash} autosort={this.state.autosort}
+            onToggleAutoSort={ () => this.onToggleAutoSort() }/>
         }
 
         { this.state.loadingDashboard ? __.loading :
-          <PollVotes poll={poll} votes={votes} projects={projects} />
+          <PollVotes poll={poll} votes={votes} projects={projects} autosort={this.state.autosort}/>
         }
       </Grid>
     );
@@ -102,4 +111,5 @@ PollView.defaultState = {
   loading: true,
   loadingDashboard: true,
   fetchingDashboard: false,
+  autosort: false
 };

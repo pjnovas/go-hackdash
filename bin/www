@@ -9,6 +9,7 @@ require('babel/register')({optional: ['es7.asyncFunctions']});
 var app = require('lib/server');
 var debug = require('debug')('vote-hackdash:server');
 var http = require('http');
+var notifier = require('lib/server/notifier');
 
 /**
  * Get port from environment and store in Express.
@@ -22,6 +23,7 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+notifier.connect(server);
 
 /**
  * Listen on provided port, on all network interfaces.

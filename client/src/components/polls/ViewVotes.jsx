@@ -47,7 +47,17 @@ export default class PollViewVotes extends React.Component {
     let poll = this.props.poll;
     let pollId = poll.isPublic ? poll.id : poll.token;
     let canVote = poll && poll.open ? true : false;
-    this.state.projectVotes.sort((a, b) => b.votes - a.votes);
+
+    if (this.props.autosort){
+      this.state.projectVotes.sort((a, b) => b.votes - a.votes);
+    }
+    else {
+      this.state.projectVotes.sort((a, b) => {
+        if(a.title < b.title) return -1;
+        if(a.title > b.title) return 1;
+        return 0;
+      });
+    }
 
     return (
       <div className="votes-ctn">
@@ -68,7 +78,8 @@ export default class PollViewVotes extends React.Component {
 PollViewVotes.displayName = "PollViewVotes";
 PollViewVotes.defaultProps = {
   votes: null,
-  projects: null
+  projects: null,
+  autosort: false
 };
 PollViewVotes.defaultState = {
   projectVotes: []

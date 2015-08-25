@@ -3,6 +3,7 @@ import { PollDispatcher } from "../dispatcher";
 
 import { PollConstants } from "../constants";
 import { PollAPI } from "../api";
+import { PollNotifier } from "../api";
 
 import Store from "./Store";
 
@@ -59,6 +60,12 @@ class PollStore extends Store {
         break;
       case PollConstants.ERROR:
         this.throwError(action.data);
+        break;
+      case PollConstants.JOIN_ROOM:
+        PollNotifier.join(this.findId(action.id));
+        break;
+      case PollConstants.LEAVE_ROOM:
+        PollNotifier.leave(this.findId(action.id));
         break;
     }
   }

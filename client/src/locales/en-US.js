@@ -55,4 +55,7 @@ export default {
   "poll_closed": "Closed",
   "poll_closed_hint": "This poll is closed for voting",
 
+  "polls_autosort_enabled": "Auto sorting votes is ENABLED",
+  "polls_autosort_disabled": "Auto sorting votes is DISABLED"
+
 };
