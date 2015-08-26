@@ -39,16 +39,23 @@ nav {
   }
 
   .dropdown-menu {
-    background: @nav-bar-bg-color;
+    background-color: @nav-bar-bg-color!important;
+    position: absolute!important;
+    float: left!important;
+    border: 1px solid #cccccc!important;
+    border: 1px solid rgba(0, 0, 0, 0.15)!important;
 
     .dropdown-menu .divider {
       border-bottom: 1px solid #E3E3E3;
     }
 
     >li>a {
+      color: @nav-bar-text-color!important;
+      padding: 3px 20px!important;
+
       &:hover, &:focus {
-        color: @nav-bar-text-color;
-        background-color: @primary-light-color;
+        color: @nav-bar-text-color!important;
+        background-color: @primary-light-color!important;
       }
     }
   }
