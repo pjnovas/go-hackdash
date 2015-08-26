@@ -9,6 +9,25 @@ export default class ProjectVote extends React.Component {
   constructor(props) {
     super(props);
     this.state = ProjectVote.defaultState;
+    this.timer = null;
+    this.lastVotes = null;
+  }
+
+  componentDidMount(){
+    this.lastVotes = this.props.model && this.props.model.votes;
+  }
+
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.model && nextProps.model.votes !== this.lastVotes){
+      this.setState({ newVote: true });
+
+      clearTimeout(this.timer);
+      this.timer = setTimeout(() => this.setState({ newVote: false }), 2000);
+
+      this.lastVotes = nextProps.model.votes;
+    }
+
+    return true;
   }
 
   onVote(){
@@ -63,7 +82,7 @@ export default class ProjectVote extends React.Component {
     }
 
     return (
-      <Card
+      <Card highlight={this.state.newVote}
         triangle={model.votes}
         triangleIcon="thumbs-up"
         title={model.title}
@@ -78,7 +97,8 @@ export default class ProjectVote extends React.Component {
 
 ProjectVote.displayName = "ProjectVote";
 ProjectVote.defaultProps = {
-  model: {}
+  model: {},
+  newVote: false
 };
 ProjectVote.defaultState = {
 

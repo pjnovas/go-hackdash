@@ -4,7 +4,7 @@
   "description": "A Challenge platform for hackathons",
   "author": "Pablo Novas <pjnovas@gmail.com>",
   "scripts": {
-    "start": "NODE_PATH=. DEBUG=vote-hackdash:* node ./bin/www",
+    "start": "NODE_PATH=. DEBUG=go-hackdash:* node ./bin/www",
     "test": "NODE_PATH=. PORT=9999 NODE_ENV=test node_modules/mocha/bin/mocha test/bootstrap.test.js test/index.js -u bdd -R spec -b"
   },
   "dependencies": {

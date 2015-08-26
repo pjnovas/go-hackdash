@@ -7,7 +7,7 @@
 require('babel/register')({optional: ['es7.asyncFunctions']});
 
 var app = require('lib/server');
-var debug = require('debug')('vote-hackdash:server');
+var debug = require('debug')('go-hackdash:server');
 var http = require('http');
 var notifier = require('lib/server/notifier');
 

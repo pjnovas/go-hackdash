@@ -33,7 +33,9 @@ export default class Header extends React.Component {
       : null )}
 
       <ul className="nav navbar-nav navbar-left">
-        <li className="navbar-brand">{this.props.title || __.app_title}</li>
+        <li className="navbar-brand">
+          <Link to="home">{this.props.title || __.app_title}</Link>
+        </li>
       </ul>
 
       {this.props.searchbox ?
@@ -42,7 +44,7 @@ export default class Header extends React.Component {
           <form role="search">
             <input type="text" autoComplete="off"
               value={ this.props.search }
-              onFocus={ () => this.props.onFocus() } 
+              onFocus={ () => this.props.onFocus() }
               onChange={ e => this.props.onSearch(e.target.value) } />
           </form>
         </div>

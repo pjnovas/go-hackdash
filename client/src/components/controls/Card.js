@@ -18,9 +18,11 @@ export default class Card extends React.Component {
       };
     }
 
+    let css = this.props.highlight ? "highlight" : "";
+
     return (
       <Row>
-        <Col xs={12} className="card">
+        <Col xs={12} className={"card " + css}>
 
           { this.props.hasOwnProperty("triangle") ?
             <div className="triangle">

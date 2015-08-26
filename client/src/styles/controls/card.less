@@ -39,7 +39,12 @@
       position: absolute;
       top: -2px;
       right: -13px;
-      color: darken(@card-triangle-bg, 3%);
+      color: @card-triangle-icon;
+
+      -webkit-transition : color 500ms ease-in;
+      -moz-transition : color 500ms ease-in;
+      -o-transition : color 500ms ease-in;
+      transition : color 500ms ease-in;
     }
 
     .triangle-top-right {
@@ -49,8 +54,27 @@
       border-width: 0 120px 120px 0;
       border-color: transparent @card-triangle-bg transparent transparent;
       z-index: 1;
+
+      -webkit-transition : border-color 500ms ease-in;
+      -moz-transition : border-color 500ms ease-in;
+      -o-transition : border-color 500ms ease-in;
+      transition : border-color 500ms ease-in;
     }
 
+  }
+
+  &.highlight {
+
+    .triangle {
+
+      .fa {
+        color: @card-triangle-icon-active;
+      }
+
+      .triangle-top-right {
+        border-color: transparent @card-triangle-bg-active transparent transparent;
+      }
+    }
   }
 
   .header {
