@@ -22,7 +22,8 @@ export default class PollForm extends React.Component {
   }
 
   render() {
-    let pollURI = window.location.origin + "/polls/" + this.props.token;
+    let baseURL = location.origin || location.protocol + "//" + location.host;
+    let pollURI = baseURL + "/polls/" + this.props.token;
 
     return (
       <form className="poll-form">

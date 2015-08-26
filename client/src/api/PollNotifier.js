@@ -9,7 +9,8 @@ class PollNotifier {
 
     this.roomJoined;
 
-    this.socket = io.connect("http://localhost:3000" + this.channel);
+    let baseURL = location.origin || location.protocol + "//" + location.host;
+    this.socket = io.connect(baseURL + this.channel);
 
     this.socket.on("connect", () => this.connected = true );
     this.socket.on("disconnect", () => this.connected = false );
