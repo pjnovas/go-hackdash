@@ -13,10 +13,10 @@ class PollAPI {
     fp.get( result => this.fingerprint = result );
   }
 
-  latest() {
+  latest(query) {
 
     request
-      .get(this.uri + "latest")
+      .get(this.uri + "latest" + (query ? "?q=" + query : ""))
       .end( (err, res) => {
         if (this.errorHandler(err, "latest")){
           return;

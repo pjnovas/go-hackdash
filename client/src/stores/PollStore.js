@@ -29,7 +29,7 @@ class PollStore extends Store {
 
     switch (action.type) {
       case PollConstants.LATEST:
-        PollAPI.latest();
+        PollAPI.latest(action.query);
         break;
       case PollConstants.FIND:
         PollAPI.find();

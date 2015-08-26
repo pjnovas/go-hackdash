@@ -5,13 +5,33 @@ import Latest from "./polls/Latest.jsx";
 import { Grid, Row, Col, Button } from "react-bootstrap";
 import { Icon } from "./controls";
 
-import {Link, Element} from 'react-scroll';
+import {Link, Element, scroller, scrollSpy} from 'react-scroll';
+
+import {PollActions} from '../actions';
+import {PollStore} from '../stores';
 
 export default class Home extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = Home.defaultState;
+  }
+
+  componentDidMount(){
+    document.addEventListener('scroll', this.scrollHandler.bind(this));
+  }
+
+  componentWillUnmount(){
+    document.removeEventListener('scroll', this.scrollHandler);
+  }
+
+  scrollHandler() {
+    if (scrollSpy.currentPositionY() > 100){
+      this.setState({ searchbox: true });
+    }
+    else {
+      this.setState({ searchbox: false });
+    }
   }
 
   onCreateClick() {
@@ -23,10 +43,24 @@ export default class Home extends React.Component {
     }
   }
 
+  onSearch(value){
+    this.setState({ search: value });
+    PollStore.clear();
+    PollActions.latest(value);
+  }
+
+  onFocusSearch(){
+    scroller.scrollTo("latests", true, 500, -55);
+  }
+
   render() {
+
     return (
       <div className="landing">
-        <Header ref="header" />
+        <Header ref="header" searchbox={this.state.searchbox}
+          search={this.state.search}
+          onSearch={ value => this.onSearch(value) }
+          onFocus={ () => this.onFocusSearch() } />
 
         <div className="landing-header">
           <div className="text-vcenter call-action">
@@ -69,5 +103,7 @@ export default class Home extends React.Component {
 
 Home.displayName = "Home";
 Home.defaultState = {
-  showLogin: false
+  showLogin: false,
+  searchbox: false,
+  search: ""
 };

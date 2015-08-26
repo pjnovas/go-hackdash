@@ -91,3 +91,48 @@ nav {
     }
   }
 }
+
+.navbar-searchbox {
+  padding-top: 9px;
+  width: 50%;
+  max-width: 300px;
+  margin: 0 auto!important;
+  display: block;
+  position: relative;
+
+  .fa {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 13px 4px;
+    font-size: 24px;
+    color: @primary-dark-color;
+  }
+
+  input {
+    width: 100%;
+    font-size: 20px;
+    border: none;
+    padding: 3px 10px;
+    padding-left: 40px;
+    background-color: @primary-light-color;
+    color: @text-icons-color;
+  }
+
+  @media (max-width: 600px) {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    display: inline-block;
+
+    input {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.right-abs {
+  position: absolute;
+  right: 0;
+  top: 0;
+}

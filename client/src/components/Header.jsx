@@ -36,8 +36,20 @@ export default class Header extends React.Component {
         <li className="navbar-brand">{this.props.title || __.app_title}</li>
       </ul>
 
+      {this.props.searchbox ?
+        <div className="nav navbar-nav navbar-searchbox">
+          <Icon name="search" />
+          <form role="search">
+            <input type="text" autoComplete="off"
+              value={ this.props.search }
+              onFocus={ () => this.props.onFocus() } 
+              onChange={ e => this.props.onSearch(e.target.value) } />
+          </form>
+        </div>
+      : null }
+
       { isLogin ?
-        <ul className="nav navbar-nav navbar-right">
+        <ul className="nav navbar-nav navbar-right right-abs">
           <li className="dropdown">
 
             <a className="dropdown-toggle user-pic" data-toggle="dropdown">

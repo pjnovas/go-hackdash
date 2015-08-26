@@ -77,9 +77,10 @@ export default {
     });
   },
 
-  latest() {
+  latest(query) {
     PollDispatcher.dispatch({
-      type: PollConstants.LATEST
+      type: PollConstants.LATEST,
+      query
     });
   },
 
