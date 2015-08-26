@@ -1,7 +1,7 @@
 {
-  "name": "vote-hackdash",
+  "name": "go-hackdash",
   "version": "1.0.0",
-  "description": "WebClient for the vote system for hackdash",
+  "description": "WebClient for challenge platform for hackathonsh",
   "author": "Pablo Novas <pjnovas@gmail.com>",
   "dependencies": {
     "bootstrap": "^3.3.5",
