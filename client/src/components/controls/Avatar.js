@@ -1,11 +1,20 @@
 
+import Icon from "./Icon.js";
+
 export default class Avatar extends React.Component {
 
   render() {
-    // TODO: if no src put a nice icon
+    
+    if (this.props.src){
+      return (
+        <img src={this.props.src} className="avatar" />
+      );
+    }
 
     return (
-      <img src={this.props.src} className="avatar" />
+      <div className="avatar iconic">
+        <Icon name="user" />
+      </div>
     );
   }
 
