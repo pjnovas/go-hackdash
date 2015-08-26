@@ -28,6 +28,7 @@ export default {
 
   "polls_create_title": "Create a Poll",
   "polls_edit_title": "Editing Poll for {1}",
+  "polls_remove_question": "Are you sure you want to remove the poll %1?",
 
   "polls_empty_legend": "You have no polls yet, to create one click on the plus button at the bottom right",
   "poll_dashboard_domain": "Hackdash Dashboard Name",
@@ -44,6 +45,7 @@ export default {
 
   "polls_card_open": "open",
   "polls_card_edit": "edit",
+  "polls_card_remove": "remove",
 
   "polls_card_project_open": "open",
   "polls_card_project_vote": "vote",

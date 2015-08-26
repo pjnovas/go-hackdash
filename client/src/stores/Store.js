@@ -72,6 +72,18 @@ class Store extends FluxStore {
     return _.isEqual(a, b);
   }
 
+  removeItem(id){
+    let current = this._state;
+    let changed = false;
+
+    if (current.has(id)){
+      current.delete(id);
+      changed = true;
+    }
+
+    return changed;
+  }
+
   mergeChild(id, list, type, overrideIdAttr){
     const idAttr = overrideIdAttr || this.childIdAttr;
     let current = this._state;

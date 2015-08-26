@@ -49,6 +49,10 @@ class PollStore extends Store {
       case PollConstants.UPDATE:
         PollAPI.update(action.id, action.poll);
         break;
+      case PollConstants.REMOVE:
+        PollAPI.remove(action.id);
+        this.__changed = this.removeItem(action.id);
+        break;
       case PollConstants.GENERATE_TOKEN:
         PollAPI.generateToken(action.id);
         break;

@@ -8,7 +8,7 @@ export default function(store, constants, setDefaults){
       "RECEIVE",
       "CREATE",
       "UPDATE",
-      "DESTROY",
+      "REMOVE",
     ]);
   }
 

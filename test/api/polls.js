@@ -227,4 +227,29 @@ describe('Polls', () => {
     });
   });
 
+  it ('must NOT allow to delete a Poll', done => {
+    const id = newPoll.id;
+    passport = cobbler('session', users[1].id);
+    agent.delete('/api/polls/' + id).expect(403).end((err, res) => {
+      expectCode(403, res);
+      passport.restore();
+      done();
+    });
+  });
+
+  it ('must allow to delete a Poll', done => {
+    const id = newPoll.id;
+
+    passport = cobbler('session', users[0].id);
+    agent.delete('/api/polls/' + id).expect(204).end((err, res) => {
+      expectCode(204, res);
+
+      agent.get('/api/polls/' + id).expect(404).end((err, res) => {
+        expectCode(404, res);
+        passport.restore();
+        done();
+      });
+    });
+  });
+
 });

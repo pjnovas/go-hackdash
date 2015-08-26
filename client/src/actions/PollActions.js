@@ -39,6 +39,13 @@ export default {
     });
   },
 
+  remove(id) {
+    PollDispatcher.dispatch({
+      type: PollConstants.REMOVE,
+      id
+    });
+  },
+
   generateToken(id) {
     PollDispatcher.dispatch({
       type: PollConstants.GENERATE_TOKEN,

@@ -329,6 +329,62 @@ describe("PollStore", function(){
 
   });
 
+  describe('REMOVE', function(){
+    let server;
+
+    before(function () {
+      server = sinon.fakeServer.create();
+      server.autoRespond = true;
+    });
+
+    after(function () {
+      server.restore();
+      PollStore.clear();
+    });
+
+    it("must call PollAPI, removing a Poll, and updating the store", function(done){
+      let pURL = PollAPI.uri, pid1 = "3456", pid2 = "3457";
+
+      let polls = [{
+        id: pid1,
+        token: "token-code2",
+        "title": "new poll title",
+        "dashboard": "dash1"
+      }, {
+        id: pid2,
+        token: "token-code2",
+        "title": "new poll title 2",
+        "dashboard": "dash2"
+      }];
+
+      // fire a recieve first to fill the store
+      PollActions.receive(polls);
+
+      server.respondWith("DELETE", pURL + pid1, [
+        204, { "Content-Type": "application/json" }, ""
+      ]);
+
+      expect(PollStore.getState().length).to.be.equal(2);
+
+      let event = PollStore.addListener(() => {
+
+        let polls = PollStore.getState();
+        expect(polls).to.be.an("array");
+        expect(polls.length).to.be.equal(1);
+
+        let poll = polls[0];
+
+        expect(poll.id).to.be.equal(pid2);
+
+        event.remove();
+        done();
+      });
+
+      PollActions.remove(pid1);
+    });
+
+  });
+
   describe('GENERATE_TOKEN', function(){
     let server;
 

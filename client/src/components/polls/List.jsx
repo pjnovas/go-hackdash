@@ -1,6 +1,6 @@
 
 import PollItem from "./Item.jsx";
-import PollActions from "../../actions";
+import {PollActions} from "../../actions";
 
 import PollModal from "./PollModal.jsx";
 
@@ -18,6 +18,10 @@ export default class PollList extends React.Component {
     this.setState({ showPollModal: true, editId: id });
   }
 
+  removeItem(id){
+    PollActions.remove(id);
+  }
+
   render() {
 
     return (
@@ -29,7 +33,8 @@ export default class PollList extends React.Component {
               return (
                 <div className="card-wrap">
                   <PollItem key={poll.id} poll={poll} readOnly={this.props.readOnly}
-                    onEditClicked={ id => this.showEdit(id) }/>
+                    onEditClicked={ id => this.showEdit(id) }
+                    onRemoveClicked={ id => this.removeItem(id) }/>
                 </div>
               );
             })}

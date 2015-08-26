@@ -7,6 +7,14 @@ import { Card, Icon } from "../controls";
 
 export default class PollItem extends React.Component {
 
+  onRemoveClicked(){
+    let model = this.props.poll;
+
+    if (window.confirm(__.polls_remove_question.replace("%1", model.title))){
+      this.props.onRemoveClicked(model.id);
+    }
+  }
+
   render() {
     let model = this.props.poll;
 
@@ -18,8 +26,16 @@ export default class PollItem extends React.Component {
 
     if (!this.props.readOnly){
       actions.push(
-        <Button bsStyle="link" onClick={ () => this.props.onEditClicked(model.id) }>
+        <Button bsStyle="link" className="btn-warning"
+            onClick={ () => this.props.onEditClicked(model.id) }>
           {__.polls_card_edit}
+        </Button>
+      );
+
+      actions.push(
+        <Button bsStyle="link" className="btn-danger"
+            onClick={ () => this.onRemoveClicked() }>
+          {__.polls_card_remove}
         </Button>
       );
     }

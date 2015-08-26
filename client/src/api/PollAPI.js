@@ -97,6 +97,16 @@ class PollAPI {
       });
   }
 
+  remove(id){
+    request
+      .del(this.uri + id)
+      .end( (err, res) => {
+        if (this.errorHandler(err, "remove")){
+          return;
+        }
+      });
+  }
+
   generateToken(id){
     request
       .post(this.uri + id + "/token")
