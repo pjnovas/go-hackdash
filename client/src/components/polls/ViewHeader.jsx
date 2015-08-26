@@ -10,6 +10,29 @@ export default class PollViewHeader extends React.Component {
   constructor(props) {
     super(props);
     this.state = PollViewHeader.defaultState;
+    this.timer = null;
+    this.lastVotes = null;
+  }
+
+  componentDidMount(){
+    this.lastVotes = this.props.model && this.props.model.votes;
+  }
+
+  shouldComponentUpdate(nextProps) {
+    let votes = nextProps.poll && nextProps.poll.votes || [];
+    let cVotes = 0;
+    votes.forEach( vote => cVotes += vote.votes );
+
+    if (cVotes !== this.lastVotes){
+      this.setState({ newVote: true });
+
+      clearTimeout(this.timer);
+      this.timer = setTimeout(() => this.setState({ newVote: false }), 2000);
+
+      this.lastVotes = cVotes;
+    }
+
+    return true;
   }
 
   render() {
@@ -62,7 +85,7 @@ export default class PollViewHeader extends React.Component {
                 <div className="title">{__.poll_counter_projects}</div>
               </div>
             </div>
-            <div className="count-wrap votes">
+            <div className={"count-wrap votes " + (this.state.newVote ? "highlight" : "")}>
               <div className="back">
                 <div className="count">{cVotes}</div>
                 <div className="title">{__.poll_counter_votes}</div>
@@ -79,7 +102,8 @@ export default class PollViewHeader extends React.Component {
 PollViewHeader.displayName = "PollViewHeader";
 PollViewHeader.defaultProps = {
   poll: null,
-  dashboard: null
+  dashboard: null,
+  newVote: false
 };
 PollViewHeader.defaultState = {
 

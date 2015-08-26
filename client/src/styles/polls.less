@@ -206,6 +206,11 @@
       	height: 100%;
         width: 100%;
 
+        -webkit-transition : background-color 500ms ease-in;
+        -moz-transition : background-color 500ms ease-in;
+        -o-transition : background-color 500ms ease-in;
+        transition : background-color 500ms ease-in;
+
         @media @sm-and-up {
           position: absolute;
           top: 0;
@@ -255,19 +260,26 @@
 
       &.projects {
         .back {
-          background: @projects-color;
+          background-color: @projects-color;
           right: 150px;
         }
       }
 
       &.votes {
         .back {
-          background: @votes-color;
+          background-color: @votes-color;
         }
 
         .title {
           padding-left: 35px;
         }
+
+        &.highlight {
+          .back {
+            background-color: @votes-color-active;
+          }
+        }
+
       }
 
     }
