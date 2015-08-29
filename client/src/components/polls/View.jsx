@@ -38,7 +38,7 @@ export default class PollView extends React.Component {
 
   onError(error){
     if (error.status === 404){
-      window.app.router.transitionTo("notfound");
+      window.location = "/notfound";
     }
   }
 

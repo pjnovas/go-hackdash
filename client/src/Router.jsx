@@ -13,11 +13,11 @@ const routes = (
     <Route path="/" name="home" handler={Home} />
 
     <Route path="/login" name="login" handler={Login} />
-    <Route path="/notfound" name="notfound" handler={NotFound} />
 
     <Route path="/polls" name="polls" handler={Polls} />
     <Route path="/polls/:id" name="poll" handler={PollView} />
 
+    <Route path="/notfound" name="notfound" handler={NotFound} />
     <NotFoundRoute handler={NotFound} />
     <DefaultRoute handler={Home}/>
   </Route>
