@@ -1,6 +1,6 @@
 {
   "name": "go-hackdash",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "WebClient for challenge platform for hackathonsh",
   "author": "Pablo Novas <pjnovas@gmail.com>",
   "dependencies": {
