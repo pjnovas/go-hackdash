@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "A Challenge platform for hackathons",
   "author": "Pablo Novas <pjnovas@gmail.com>",
+  "license" : "BSD-2-Clause",
   "scripts": {
     "start": "NODE_PATH=. DEBUG=go-hackdash:* node ./bin/www",
     "test": "NODE_PATH=. PORT=9999 NODE_ENV=test node_modules/mocha/bin/mocha test/bootstrap.test.js test/index.js -u bdd -R spec -b"
