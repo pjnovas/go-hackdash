@@ -76,7 +76,8 @@ export default class ProjectVote extends React.Component {
       </Button>
     );
 
-    let picUrl = baseURI + model.cover;
+    let picUrl = 'https://s3-us-west-2.amazonaws.com/hackdash' + model.cover;
+    //let picUrl = baseURI + model.cover;
     if (!model.cover){
       picUrl = true;
     }
