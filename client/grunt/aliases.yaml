@@ -14,7 +14,6 @@ w:
   - 'watch:app'
 
 min:
-  - 'eslint'
   - 'less'
   - 'browserify:app'
   - 'uglify:all'
